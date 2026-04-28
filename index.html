@@ -1,0 +1,1717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Rights at Work — Migrants At Work</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #faf7f2;
+    --dark: #1a1a18;
+    --rust: #c0432a;
+    --gold: #d4a94a;
+    --sage: #5a7a5c;
+    --blush: #e8d5c4;
+    --slate: #4a5568;
+    --light-sage: #e8f0e8;
+    --light-rust: #fdf0ed;
+    --light-gold: #fdf8ed;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--dark); font-size: 16px; line-height: 1.6; }
+
+  /* HERO */
+  .hero { background: var(--dark); color: var(--cream); padding: 3rem 1.5rem 2.5rem; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: -60px; right: -60px; width: 220px; height: 220px; border-radius: 50%; background: var(--rust); opacity: 0.15; }
+  .hero::after { content: ''; position: absolute; bottom: -40px; left: -40px; width: 160px; height: 160px; border-radius: 50%; background: var(--gold); opacity: 0.12; }
+  .hero-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+  .hero h1 { font-family: 'Fraunces', serif; font-size: clamp(2.2rem, 7vw, 3.5rem); font-weight: 900; line-height: 1.1; margin-bottom: 1rem; }
+  .hero h1 em { font-style: italic; color: var(--gold); }
+  .hero p { font-size: 1.05rem; color: #c8c4bc; max-width: 520px; margin-bottom: 1.5rem; font-weight: 300; }
+  .status-notice { display: inline-flex; align-items: center; gap: 0.6rem; background: var(--rust); color: white; padding: 0.75rem 1.25rem; border-radius: 100px; font-size: 0.9rem; font-weight: 500; }
+  .status-notice::before { content: '✓'; background: white; color: var(--rust); width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; flex-shrink: 0; }
+
+  /* NAV */
+  .nav-wrapper { background: white; border-bottom: 1px solid #e8e4dc; position: sticky; top: 0; z-index: 200; }
+  .nav { padding: 0 1rem; display: flex; overflow-x: auto; scrollbar-width: none; }
+  .nav::-webkit-scrollbar { display: none; }
+  .nav-item { position: static; display: flex; align-items: stretch; }
+  .nav-item > a { text-decoration: none; color: var(--slate); font-size: 0.82rem; font-weight: 500; padding: 1rem 0.85rem; white-space: nowrap; border-bottom: 2px solid transparent; transition: all 0.2s; display: flex; align-items: center; gap: 0.25rem; cursor: pointer; }
+  .nav-item > a::after { content: '▾'; font-size: 0.65rem; opacity: 0.5; }
+  .nav-item.open > a { color: var(--rust); border-bottom-color: var(--rust); }
+  .nav-item.nav-no-dropdown > a::after { display: none; }
+  .nav-item.nav-no-dropdown > a { cursor: pointer; }
+  .nav-dropdown { display: none; position: fixed; background: white; border: 1px solid #e8e4dc; border-top: 2px solid var(--rust); border-radius: 0 0 10px 10px; min-width: 230px; box-shadow: 0 8px 24px rgba(0,0,0,0.13); z-index: 500; padding: 0.4rem 0; }
+  .nav-item.open .nav-dropdown { display: block; }
+  .nav-dropdown a { display: block; padding: 0.55rem 1.1rem; font-size: 0.8rem; color: var(--slate); text-decoration: none; white-space: nowrap; border-left: 3px solid transparent; transition: all 0.15s; }
+  .nav-dropdown a:hover { color: var(--rust); background: var(--light-rust); border-left-color: var(--rust); }
+  .nav-dropdown .dd-label { display: block; padding: 0.5rem 1.1rem 0.2rem; font-size: 0.67rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #b0a898; }
+
+    /* SECTIONS */
+  .section { padding: 2.5rem 1.5rem; max-width: 800px; margin: 0 auto; }
+  .section + .section { border-top: 1px solid #e8e4dc; }
+  .section-tag { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.5rem; }
+  .tag-rust { color: var(--rust); } .tag-sage { color: var(--sage); } .tag-gold { color: #a07c2a; } .tag-slate { color: var(--slate); }
+  .section h2 { font-family: 'Fraunces', serif; font-size: clamp(1.6rem, 5vw, 2.2rem); font-weight: 700; line-height: 1.2; margin-bottom: 1rem; }
+  .section > p { color: var(--slate); margin-bottom: 1.5rem; font-size: 0.97rem; }
+
+  /* CARDS */
+  .card { background: white; border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; border: 1px solid #e8e4dc; }
+  .card h3 { font-family: 'Fraunces', serif; font-size: 1.15rem; font-weight: 700; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.6rem; }
+  .card .num { background: var(--dark); color: var(--cream); width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 700; flex-shrink: 0; }
+  .card ul { list-style: none; padding: 0; }
+  .card ul li { padding: 0.4rem 0 0.4rem 1.4rem; position: relative; font-size: 0.95rem; color: var(--slate); border-bottom: 1px solid #f0ede8; }
+  .card ul li:last-child { border-bottom: none; }
+  .card ul li::before { content: '→'; position: absolute; left: 0; color: var(--rust); font-weight: 700; }
+
+  /* HIGHLIGHT */
+  .highlight { border-radius: 12px; padding: 1.25rem 1.5rem; margin: 1.25rem 0; border-left: 4px solid; }
+  .highlight.rust { background: var(--light-rust); border-color: var(--rust); }
+  .highlight.sage { background: var(--light-sage); border-color: var(--sage); }
+  .highlight.gold { background: var(--light-gold); border-color: var(--gold); }
+  .highlight strong { display: block; margin-bottom: 0.35rem; font-size: 0.95rem; }
+  .highlight p, .highlight li { font-size: 0.92rem; color: var(--slate); }
+  .highlight ul { padding-left: 1.2rem; margin-top: 0.5rem; }
+  .highlight ul li { margin-bottom: 0.3rem; }
+
+  /* SSP GRID */
+  .ssp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0; }
+  @media (max-width: 480px) { .ssp-grid { grid-template-columns: 1fr; } }
+  .ssp-box { background: white; border-radius: 10px; padding: 1.25rem; border: 1px solid #e8e4dc; text-align: center; }
+  .ssp-box .label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--slate); margin-bottom: 0.5rem; }
+  .ssp-box .value { font-family: 'Fraunces', serif; font-size: 1.6rem; font-weight: 900; color: var(--dark); }
+  .ssp-box .sub { font-size: 0.8rem; color: var(--slate); margin-top: 0.3rem; }
+
+  /* FORMS */
+  .template-intro { background: var(--dark); color: var(--cream); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; }
+  .template-intro h3 { font-family: 'Fraunces', serif; font-size: 1.2rem; margin-bottom: 0.5rem; }
+  .template-intro p { font-size: 0.88rem; color: #c8c4bc; }
+  .form-group { margin-bottom: 1.25rem; }
+  .form-group label { display: block; font-size: 0.82rem; font-weight: 600; color: var(--dark); margin-bottom: 0.4rem; letter-spacing: 0.03em; }
+  .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 0.75rem 1rem; border: 1.5px solid #d8d4cc; border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; background: white; color: var(--dark); transition: border-color 0.2s; -webkit-appearance: none; }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-color: var(--rust); }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  @media (max-width: 480px) { .form-row { grid-template-columns: 1fr; } }
+  .checkbox-group { display: flex; flex-direction: column; gap: 0.5rem; }
+  .checkbox-item { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.6rem 0.75rem; background: white; border: 1.5px solid #d8d4cc; border-radius: 8px; cursor: pointer; transition: border-color 0.2s, background 0.2s; }
+  .checkbox-item:hover { border-color: var(--rust); background: var(--light-rust); }
+  .checkbox-item input[type="checkbox"] { width: auto; margin-top: 2px; flex-shrink: 0; accent-color: var(--rust); }
+  .checkbox-item span { font-size: 0.9rem; color: var(--slate); }
+  .preview-area { background: #f9f6f1; border: 1px solid #d8d4cc; border-radius: 10px; padding: 1.5rem; margin-top: 1.5rem; font-size: 0.88rem; line-height: 1.8; color: var(--dark); white-space: pre-wrap; font-family: 'DM Sans', sans-serif; display: none; }
+  .preview-area.visible { display: block; }
+  .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1.5rem; border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 0.92rem; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
+  .btn-primary { background: var(--rust); color: white; }
+  .btn-primary:hover { background: #a33822; }
+  .btn-secondary { background: white; color: var(--dark); border: 1.5px solid #d8d4cc; }
+  .btn-secondary:hover { border-color: var(--dark); }
+  .btn-row { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1rem; }
+
+  /* CONTACTS */
+  .contact-card { background: white; border-radius: 10px; padding: 1.1rem 1.25rem; margin-bottom: 0.75rem; border: 1px solid #e8e4dc; display: flex; align-items: flex-start; gap: 1rem; }
+  .contact-icon { width: 40px; height: 40px; border-radius: 8px; background: var(--dark); color: var(--cream); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
+  .contact-card h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.15rem; }
+  .contact-card p { font-size: 0.85rem; color: var(--slate); }
+  .contact-card a { color: var(--rust); text-decoration: none; font-weight: 500; }
+
+  /* TRIBUNAL ALERT */
+  .tribunal-alert { background: var(--rust); color: white; border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; }
+  .tribunal-alert h3 { font-family: 'Fraunces', serif; font-size: 1.15rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+  .tribunal-alert p { font-size: 0.9rem; opacity: 0.92; line-height: 1.6; }
+  .tribunal-alert strong { display: block; margin-top: 0.6rem; font-size: 0.95rem; }
+
+  /* PATHWAY */
+  .pathway { background: white; border: 1px solid #e8e4dc; border-radius: 14px; overflow: hidden; margin: 1.5rem 0; }
+  .pathway-header { background: var(--dark); color: var(--cream); padding: 1.1rem 1.5rem; font-family: 'Fraunces', serif; font-size: 1.05rem; font-weight: 700; }
+  .pathway-question { padding: 1.25rem 1.5rem 0.75rem; font-weight: 600; font-size: 0.97rem; color: var(--dark); }
+  .pathway-options { display: flex; flex-direction: column; gap: 0.6rem; padding: 0 1.5rem 1.25rem; }
+  .pathway-btn { background: var(--cream); border: 1.5px solid #d8d4cc; border-radius: 8px; padding: 0.85rem 1rem; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 500; cursor: pointer; text-align: left; color: var(--dark); transition: all 0.2s; display: flex; align-items: center; gap: 0.75rem; }
+  .pathway-btn:hover { border-color: var(--rust); background: var(--light-rust); }
+  .pathway-btn .pb-icon { width: 28px; height: 28px; border-radius: 6px; background: var(--blush); display: flex; align-items: center; justify-content: center; font-size: 0.9rem; flex-shrink: 0; }
+  .pathway-result { display: none; margin: 0 1.5rem 1.5rem; border-radius: 10px; padding: 1.25rem; border-left: 4px solid var(--sage); background: var(--light-sage); animation: fadeIn 0.3s ease; }
+  .pathway-result.rust-result { border-color: var(--rust); background: var(--light-rust); }
+  .pathway-result.gold-result { border-color: var(--gold); background: var(--light-gold); }
+  .pathway-result.visible { display: block; }
+  .pathway-result h4 { font-family: 'Fraunces', serif; font-size: 1rem; margin-bottom: 0.6rem; }
+  .pathway-result p, .pathway-result li { font-size: 0.88rem; color: var(--slate); line-height: 1.6; }
+  .pathway-result ul { padding-left: 1.2rem; margin-top: 0.5rem; }
+  .pathway-result ul li { margin-bottom: 0.35rem; }
+  .pathway-back { background: none; border: none; color: var(--rust); font-size: 0.85rem; cursor: pointer; padding: 0.75rem 0 0; display: inline-flex; align-items: center; gap: 0.3rem; font-family: 'DM Sans', sans-serif; font-weight: 600; text-decoration: underline; }
+  .pathway-steps { counter-reset: step; list-style: none; padding: 0; margin-top: 0.75rem; }
+  .pathway-steps li { counter-increment: step; padding: 0.5rem 0 0.5rem 2.2rem; position: relative; font-size: 0.88rem; color: var(--slate); border-bottom: 1px solid rgba(0,0,0,0.06); }
+  .pathway-steps li:last-child { border-bottom: none; }
+  .pathway-steps li::before { content: counter(step); position: absolute; left: 0; top: 0.5rem; background: var(--dark); color: var(--cream); width: 20px; height: 20px; border-radius: 50%; font-size: 0.7rem; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+
+  /* TIMELINE */
+  .timeline { position: relative; padding-left: 2rem; margin: 1rem 0; }
+  .timeline::before { content: ''; position: absolute; left: 8px; top: 0; bottom: 0; width: 2px; background: #d8d4cc; }
+  .timeline-item { position: relative; padding: 0 0 1.25rem 1rem; }
+  .timeline-item::before { content: ''; position: absolute; left: -1.55rem; top: 0.3rem; width: 12px; height: 12px; border-radius: 50%; background: var(--rust); border: 2px solid white; box-shadow: 0 0 0 2px var(--rust); }
+  .timeline-item .t-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--rust); margin-bottom: 0.2rem; }
+  .timeline-item h4 { font-family: 'Fraunces', serif; font-size: 0.97rem; margin-bottom: 0.3rem; }
+  .timeline-item p { font-size: 0.87rem; color: var(--slate); }
+
+  /* VET STEPS */
+  .vet-step { background: white; border: 1px solid #e8e4dc; border-radius: 12px; padding: 1.25rem 1.5rem; margin-bottom: 1rem; display: flex; gap: 1.25rem; align-items: flex-start; }
+  .vet-num { background: var(--rust); color: white; font-family: 'Fraunces', serif; font-size: 1.4rem; font-weight: 900; width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .vet-step h3 { font-family: 'Fraunces', serif; font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; }
+  .vet-step p { font-size: 0.88rem; color: var(--slate); margin-bottom: 0.4rem; }
+  .vet-step a { color: var(--rust); font-size: 0.85rem; font-weight: 500; word-break: break-all; }
+  .warning-tag { display: inline-block; background: var(--rust); color: white; font-size: 0.72rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 4px; letter-spacing: 0.05em; margin-top: 0.4rem; }
+
+  /* DO/DONT */
+  .do-dont { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0; }
+  @media (max-width: 520px) { .do-dont { grid-template-columns: 1fr; } }
+  .do-box, .dont-box { border-radius: 10px; padding: 1.1rem; }
+  .do-box { background: var(--light-sage); border: 1px solid #b8d4b8; }
+  .dont-box { background: var(--light-rust); border: 1px solid #e8b8ac; }
+  .do-box h4 { color: var(--sage); font-size: 0.85rem; font-weight: 700; margin-bottom: 0.6rem; text-transform: uppercase; }
+  .dont-box h4 { color: var(--rust); font-size: 0.85rem; font-weight: 700; margin-bottom: 0.6rem; text-transform: uppercase; }
+  .do-box ul, .dont-box ul { list-style: none; padding: 0; }
+  .do-box ul li, .dont-box ul li { font-size: 0.86rem; color: var(--slate); padding: 0.3rem 0 0.3rem 1.3rem; position: relative; border-bottom: 1px solid rgba(0,0,0,0.06); }
+  .do-box ul li:last-child, .dont-box ul li:last-child { border-bottom: none; }
+  .do-box ul li::before { content: '✓'; position: absolute; left: 0; color: var(--sage); font-weight: 700; }
+  .dont-box ul li::before { content: '✗'; position: absolute; left: 0; color: var(--rust); font-weight: 700; }
+
+  /* FOOTER */
+  footer { background: var(--dark); color: #a0988c; padding: 2rem 1.5rem; text-align: center; font-size: 0.82rem; line-height: 1.7; margin-top: 2rem; }
+  footer strong { color: var(--cream); }
+
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  @media print { .nav, .btn-row { display: none; } .preview-area { display: block !important; } }
+</style>
+
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-label">Migrants At Work</div>
+  <h1>Your rights at work<br><em>apply to everyone.</em></h1>
+  <p>Whether you are new to the UK, on a visa, or unsure of your status — UK employment law protects you. This guide explains what to do if something goes wrong.</p>
+  <div class="status-notice">Your immigration status does not affect these rights</div>
+</div>
+
+<!-- NAV -->
+<div class="nav-wrapper"><nav class="nav">
+
+  <div class="nav-item nav-no-dropdown">
+    <a href="#intro">Introduction</a>
+  </div>
+
+  <div class="nav-item nav-no-dropdown">
+    <a href="#vet">Vet an Employer</a>
+  </div>
+
+  <div class="nav-item nav-no-dropdown">
+    <a href="#employer-rules">Employer Rules</a>
+  </div>
+
+  <div class="nav-item">
+    <a href="#your-rights">Your Rights</a>
+    <div class="nav-dropdown">
+      <span class="dd-label">On this page</span>
+      <a href="#injury">A) Injury at work</a>
+      <a href="#ssp">B) Sick pay &amp; SSP</a>
+      <a href="#hours">C) Long hours &amp; rest breaks</a>
+      <a href="#hoursvisa">D) Hours, pay &amp; your visa</a>
+      <a href="#wrongpay">E) Wrong pay &amp; unpaid wages</a>
+      <a href="#publicfunds">F) Public funds</a>
+    </div>
+  </div>
+
+  <div class="nav-item">
+    <a href="#ending">Job Ending</a>
+    <div class="nav-dropdown">
+      <span class="dd-label">On this page</span>
+      <a href="#ending">Your 60-day grace period</a>
+      <a href="#ending-situation">What happens when...</a>
+    </div>
+  </div>
+
+  <div class="nav-item nav-no-dropdown">
+    <a href="#switching">Switch Sponsor</a>
+  </div>
+
+  <div class="nav-item">
+    <a href="#templates">Template Letters</a>
+    <div class="nav-dropdown">
+      <span class="dd-label">On this page</span>
+      <a href="#grievance">Raise a Grievance</a>
+      <a href="#dismissal">Unfair Dismissal</a>
+    </div>
+  </div>
+
+  <div class="nav-item">
+    <a href="#reporting">Reporting &amp; Visa</a>
+    <div class="nav-dropdown">
+      <span class="dd-label">On this page</span>
+      <a href="#reporting">Will I lose my visa if I report?</a>
+      <a href="#reporting">ACAS — what to expect</a>
+      <a href="#reporting">Employment Tribunals</a>
+      <a href="#reporting">Whistleblowing law</a>
+      <a href="#fwa">The Fair Work Agency</a>
+      <a href="#nrm">The NRM — honest facts</a>
+    </div>
+  </div>
+
+  <div class="nav-item">
+    <a href="#help">Get Help</a>
+    <div class="nav-dropdown">
+      <span class="dd-label">On this page</span>
+      <a href="#help">ACAS</a>
+      <a href="#help">Citizens Advice</a>
+      <a href="#help">Employment Tribunal</a>
+      <a href="#help">Fair Work Agency</a>
+      <a href="#help">Migrant Help</a>
+      <a href="#help">Supporting charities</a>
+      <a href="#help">Free legal advice</a>
+    </div>
+  </div>
+
+</nav></div>
+
+
+
+<!-- INTRO -->
+<div class="section" id="intro">
+  <div class="section-tag tag-rust">Introduction</div>
+  <h2>About this guide</h2>
+  <p>Welcome to your guide on workplace rights in the United Kingdom. This resource highlights common issues experienced by migrant workers. This resource contains letter templates to raise grievances, links to other sites for more information and real examples experienced by our Justice For Sponsored Workers members. It is designed specifically for migrant workers to ensure you are treated fairly, paid correctly, and protected by the law, regardless of your visa status.</p>
+
+  <div class="highlight sage">
+    <strong>📩 Help us improve this guide</strong>
+    <p>If you feel any information is missing or incorrect, please do contact us via <a href="mailto:info@migrantsatwork.org" style="color:var(--sage);font-weight:600;">info@migrantsatwork.org</a></p>
+  </div>
+
+  <div class="card">
+    <h3>What this guide covers</h3>
+    <ul>
+      <li><a href="#vet" style="color:var(--rust);font-weight:600;text-decoration:none;">How to vet an employer</a> — check before you accept a job offer</li>
+      <li><a href="#employer-rules" style="color:var(--rust);font-weight:600;text-decoration:none;">Employer Rules</a> — what employers are and are not allowed to do</li>
+      <li><a href="#your-rights" style="color:var(--rust);font-weight:600;text-decoration:none;">Your Rights</a> — information on sickness, injury, pay, hours and access to public funds</li>
+      <li><a href="#ending" style="color:var(--rust);font-weight:600;text-decoration:none;">Job ending</a> — what happens when your job ends and how to switch employers</li>
+      <li><a href="#templates" style="color:var(--rust);font-weight:600;text-decoration:none;">Template letters</a> — grievance and unfair dismissal letter generators</li>
+      <li><a href="#reporting" style="color:var(--rust);font-weight:600;text-decoration:none;">Reporting &amp; visa</a> — how to report exploitation without risking your visa</li>
+      <li><a href="#help" style="color:var(--rust);font-weight:600;text-decoration:none;">Get help</a> — where to get free, confidential support</li>
+    </ul>
+  </div>
+
+  <div class="highlight rust">
+    <strong>⚠ This guide gives general information, not legal advice</strong>
+    <p>Every situation is different. For advice specific to your circumstances, please contact ACAS, Citizens Advice, or a regulated immigration adviser. See the <a href="#help" style="color:var(--rust);font-weight:600;">Get Help</a> section at the bottom of this page for contact details.</p>
+  </div>
+</div>
+
+
+
+<!-- VET AN EMPLOYER -->
+<div class="section" id="vet">
+  <div class="section-tag tag-gold">Before You Start</div>
+  <h2>How to vet an employer</h2>
+  <p>Before you accept a job offer, it is important to check that the employer is legitimate, legally allowed to sponsor you, and has a clean history. This can protect you from scams and exploitation.</p>
+
+  <div class="vet-step">
+    <div class="vet-num">1</div>
+    <div>
+      <h3>Check the sponsor is licensed</h3>
+      <p>Go to the official Register of Licensed Sponsors and search the company name. If they are not on this list, they <strong>cannot legally employ you on a Skilled Worker visa</strong>.</p>
+      <div class="warning-tag">⚠ NOT on the register = NOT authorised</div><br>
+      <a href="https://www.gov.uk/government/publications/register-of-licensed-sponsors-workers" target="_blank">gov.uk — Register of Licensed Sponsors (Workers)</a>
+    </div>
+  </div>
+
+  <div class="vet-step">
+    <div class="vet-num">2</div>
+    <div>
+      <h3>Research the company on Companies House</h3>
+      <p>Search the business on Companies House to check it is still active and has not been shut down. Look at any past name changes — <strong>many name changes can be a warning sign</strong> of a company trying to escape a bad history.</p>
+      <a href="https://find-and-update.company-information.service.gov.uk" target="_blank">find-and-update.company-information.service.gov.uk</a>
+    </div>
+  </div>
+
+  <div class="vet-step">
+    <div class="vet-num">3</div>
+    <div>
+      <h3>Check the legal history — Employment Tribunal records</h3>
+      <p>Search the Employment Tribunal records for the employer's name. See if the company has been taken to tribunal for unpaid wages or other employment breaches. <strong>Repeated claims is a warning sign.</strong></p>
+      <a href="https://www.gov.uk/employment-tribunal-decisions" target="_blank">gov.uk — Employment Tribunal Decisions</a>
+    </div>
+  </div>
+
+  <div class="vet-step">
+    <div class="vet-num">4</div>
+    <div>
+      <h3>Check health and safety records</h3>
+      <p>A safe workplace is a legal requirement. Ask to see a copy of their health and safety risk assessment or insurance policy before starting. You can also check the Health and Safety Executive website for any enforcement notices issued against the company.</p>
+      <a href="https://resources.hse.gov.uk/notices/" target="_blank">resources.hse.gov.uk/notices</a>
+    </div>
+  </div>
+
+  <div class="vet-step">
+    <div class="vet-num">5</div>
+    <div>
+      <h3>Search what others say — Google, LinkedIn, Glassdoor</h3>
+      <p>Search the company name on Google, LinkedIn, and Glassdoor. Look for repeated complaints about pay, hours, breaches, or bullying. <strong>These are warning signs.</strong></p>
+      <a href="https://www.glassdoor.co.uk" target="_blank">glassdoor.co.uk</a>
+    </div>
+  </div>
+
+  <div class="highlight rust">
+    <strong>⚠ Why these checks matter</strong>
+    <p>An unlicensed sponsor cannot legally employ you on a Skilled Worker visa. A financially unstable company may disappear before it can pay you. A bad legal history shows an employer may not follow the law. Use these checks to avoid scams and protect yourself from exploitation.</p>
+  </div>
+
+</div>
+
+
+
+<!-- EMPLOYER RULES -->
+<div class="section" id="employer-rules">
+  <div class="section-tag tag-sage">Know Your Rights</div>
+  <h2>What employers are — and are not — allowed to do</h2>
+  <p>Many migrant workers are told things by employers that are simply not true. Here is a clear guide to what the law actually says.</p>
+
+  <div class="do-dont">
+    <div class="do-box">
+      <h4>✓ Employers CAN</h4>
+      <ul>
+        <li>Change your hours within reason if your contract allows it</li>
+        <li>Temporarily reduce hours due to genuine business need (with notice)</li>
+        <li>Require you to do training as part of your role</li>
+        <li>Make you redundant if there is a genuine business reason</li>
+        <li>Set reasonable workplace rules and performance standards</li>
+      </ul>
+    </div>
+    <div class="dont-box">
+      <h4>✗ Employers CANNOT</h4>
+      <ul>
+        <li>Charge you recruitment fees or deduct them from wages</li>
+        <li>Make you pay for your own DBS check or mandatory training</li>
+        <li>Withhold your passport, BRP, or identity documents</li>
+        <li>Threaten to report you to immigration as a form of control</li>
+        <li>Pay you below the minimum wage for your visa category</li>
+        <li>Change your job role or salary so it no longer meets visa requirements without telling the Home Office</li>
+        <li>Penalise you for raising health and safety concerns</li>
+        <li>Dismiss you for reporting exploitation or whistleblowing</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="highlight sage">
+    <strong>🔒 A legitimate employer will NEVER ask you to pay for your Certificate of Sponsorship</strong>
+    <p>It is illegal to charge workers recruitment fees or the cost of sponsorship. If an employer asks you to pay anything to secure your visa or job, this is a serious warning sign — <a href="https://stopthinkfraud.campaign.gov.uk/reporting-fraud/#how-to-report-fraud" target="_blank" style="color:var(--sage);font-weight:600;">report it as fraud here</a>. You can also contact the Fair Work Agency on Phone: <strong>0345 161 6000</strong> or Email: <a href="mailto:contact@fairworkagency.gov.uk" style="color:var(--sage);font-weight:600;">contact@fairworkagency.gov.uk</a>.</p>
+  </div>
+
+  <div class="pathway">
+    <div class="pathway-header">🔀 Has your employer done something that concerns you?</div>
+    <div class="pathway-question">What has happened?</div>
+    <div class="pathway-options" id="employer-opts">
+      <button class="pathway-btn" onclick="showPathway('employer','hours')"><span class="pb-icon">🕐</span> They reduced my hours or changed my role</button>
+      <button class="pathway-btn" onclick="showPathway('employer','fees')"><span class="pb-icon">💸</span> They charged me fees or deducted money illegally</button>
+      <button class="pathway-btn" onclick="showPathway('employer','docs')"><span class="pb-icon">📄</span> They are withholding my documents</button>
+      <button class="pathway-btn" onclick="showPathway('employer','threat')"><span class="pb-icon">😨</span> They threatened me with immigration or deportation</button>
+    </div>
+    <div class="pathway-result" id="employer-hours">
+      <h4>Hours reduced or role changed</h4>
+      <p>This has both employment law and visa implications.</p>
+      <ol class="pathway-steps">
+        <li>Check your contract — can your employer legally change your hours or role?</li>
+        <li>If your salary drops below the Skilled Worker minimum for your occupation code, your visa may be at risk — contact an immigration adviser immediately.</li>
+        <li>Your employer is legally required to tell the Home Office of significant changes to your role or salary. If they have not, they are in breach of their sponsor duties.</li>
+        <li>If the change was imposed without your agreement, raise a formal grievance (see the Grievance Letter section below).</li>
+        <li>If you are forced to accept changes you did not agree to, this may be constructive dismissal — see the <a href="#dismissal" style="color:var(--rust);font-weight:600;">Unfair Dismissal section</a> for more information.</li>
+      </ol>
+      <button class="pathway-back" onclick="resetPathway('employer')">← Back to options</button>
+    </div>
+    <div class="pathway-result rust-result" id="employer-fees">
+      <h4>Charging fees or deducting money illegally</h4>
+      <p>This is illegal under UK law and may constitute labour exploitation.</p>
+      <ol class="pathway-steps">
+        <li>Recruitment fees charged to workers are banned under the Employment Agencies Act and the Modern Slavery Act.</li>
+        <li>Keep records of any deductions — payslips, bank statements, messages.</li>
+        <li>Report to the Fair Work Agency helpline: <strong>0800 917 2368</strong> (free).</li>
+        <li>You may be able to claim the deducted money back through an Employment Tribunal.</li>
+      </ol>
+      <button class="pathway-back" onclick="resetPathway('employer')">← Back to options</button>
+    </div>
+    <div class="pathway-result rust-result" id="employer-docs">
+      <h4>Documents being withheld</h4>
+      <p>Withholding identity documents is a recognised indicator of modern slavery and labour exploitation.</p>
+      <ol class="pathway-steps">
+        <li>Your passport and BRP belong to you. No employer has the right to hold them.</li>
+        <li>Demand their return in writing (by email) immediately and keep a copy.</li>
+        <li>If they refuse, contact the police or the Fair Work Agency: <strong>0345 161 6000</strong> (free) — this may be a criminal matter.</li>
+        <li>You can also contact Migrant Help: <strong>0808 8010 503</strong> (free, 24 hours).</li>
+        <li>Do not delay — this is serious and you need specialist support.</li>
+      </ol>
+      <button class="pathway-back" onclick="resetPathway('employer')">← Back to options</button>
+    </div>
+    <div class="pathway-result rust-result" id="employer-threat">
+      <h4>Threatened with immigration or deportation</h4>
+      <p>Using the threat of immigration enforcement to control a worker is a form of coercion and may be a criminal offence.</p>
+      <ol class="pathway-steps">
+        <li>Your employer cannot report you to the Home Office as a form of punishment or control — this is an abuse of the sponsorship system.</li>
+        <li>Write down exactly what was said, when, and who was present.</li>
+        <li>Contact the Fair Work Agency immediately: <strong>0345 161 6000</strong>.</li>
+        <li>You may have whistleblower protection — see the Reporting &amp; Visa section below.</li>
+        <li>Contact a regulated immigration adviser to understand your actual visa position — do not rely on your employer's version of events.</li>
+      </ol>
+      <button class="pathway-back" onclick="resetPathway('employer')">← Back to options</button>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- YOUR RIGHTS -->
+<div class="section" id="your-rights">
+  <div class="section-tag tag-rust">Your Rights</div>
+  <h2>Your rights at work</h2>
+  <p>UK law protects every worker — regardless of visa status. This section covers key rights you should know about: what to do if you are injured, how to get sick pay, your rights on working hours and rest breaks, what happens if your hours are not enough, and what to do about wrong or missing pay.</p>
+
+  <!-- a) Injury at work -->
+  <div id="injury" style="margin-top:2rem;">
+    <h3 style="font-family:'Fraunces',serif; font-size:1.35rem; font-weight:700; margin-bottom:0.75rem;">a) Injury at work</h3>
+    <p style="color:var(--slate); margin-bottom:1rem; font-size:0.97rem;">If you have been hurt at work, you have the right to take action. You do not have to suffer in silence — and you cannot be punished for reporting an injury.</p>
+
+    <div class="highlight rust">
+      <strong>⚠ Do this first — report it immediately</strong>
+      <p>Report any injury to your employer as soon as possible, even if you feel pressure not to. Reporting it protects you legally. Delay can be used against you later.</p>
+    </div>
+
+    <div class="card">
+      <h3>What to do if you are injured at work</h3>
+      <ul>
+        <li>Report the injury to your manager or supervisor immediately — in writing if possible</li>
+        <li>Seek medical treatment — go to a GP, walk-in centre, or A&amp;E</li>
+        <li>Ask for the injury to be recorded in the workplace accident book</li>
+        <li>Write down the date, time, place, and what happened — in your own language if needed</li>
+        <li>Note the names of anyone who witnessed it</li>
+        <li>Take photographs of the location or any equipment involved if it is safe to do so</li>
+        <li>Keep any messages, letters, or documents relating to the incident</li>
+        <li>Keep your fit notes (sick notes) from your doctor</li>
+      </ul>
+    </div>
+
+    <div class="highlight sage">
+      <strong>🔒 You cannot be punished for reporting an injury</strong>
+      <p>It is illegal for your employer to dismiss you or treat you unfairly for reporting an injury or raising a health and safety concern. This protection is called "<a href="#reporting" style="color:var(--sage);font-weight:600;">whistleblower protection</a>" and it applies to all workers regardless of visa status.</p>
+    </div>
+  </div>
+
+  <!-- b) Sick pay / SSP -->
+  <div id="ssp" style="margin-top:2.5rem; padding-top:2rem; border-top:1px solid #e8e4dc;">
+    <h3 style="font-family:'Fraunces',serif; font-size:1.35rem; font-weight:700; margin-bottom:0.75rem;">b) What to do if you are sick &amp; Statutory Sick Pay (SSP)</h3>
+    <p style="color:var(--slate); margin-bottom:1rem; font-size:0.97rem;">If you are too ill to work, you are entitled to Statutory Sick Pay. This is a legal minimum — your employer must pay it. It applies to all eligible employees, regardless of how much you earn or where you are from.</p>
+
+    <div class="ssp-grid">
+      <div class="ssp-box">
+        <div class="label">Current weekly rate</div>
+        <div class="value">£123.25</div>
+        <div class="sub">or 80% of average weekly earnings, whichever is lower</div>
+      </div>
+      <div class="ssp-box">
+        <div class="label">Maximum duration</div>
+        <div class="value">28 weeks</div>
+        <div class="sub">SSP can be paid for up to 28 weeks of illness</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Who qualifies for SSP?</h3>
+      <ul>
+        <li>You are classed as an employee (not self-employed)</li>
+        <li>You have been ill for at least 4 days in a row (including weekends)</li>
+        <li>You have told your employer you are sick within their deadline (usually 7 days)</li>
+        <li>All eligible employees qualify — regardless of how much you earn, or whether you have access to public funds</li>
+        <li>Zero-hours and casual workers may also qualify — check your contract</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>How to get SSP — what to do</h3>
+      <ul>
+        <li>Tell your employer as soon as possible — follow their absence reporting procedure (often a phone call on day one)</li>
+        <li>SSP starts automatically from day 4 of your illness — your employer does not need to do anything special, they simply pay it through your normal payroll</li>
+        <li>Get a fit note (sick note) from your GP if you are off for more than 7 days — this documents the reason and confirms you cannot work</li>
+        <li>Check your contract — you may be entitled to more than SSP ("contractual sick pay") which your employer pays on top</li>
+        <li>Keep copies of all medical notes, messages, and correspondence</li>
+        <li>If your employer refuses to pay SSP or pressures you to work while ill, contact ACAS — you can find full ACAS contact details in the <a href="#help" style="color:var(--rust);font-weight:600;">Get Help</a> section</li>
+      </ul>
+    </div>
+
+    <div class="highlight rust">
+      <strong>⚠ Your employer cannot make you work while you are unfit</strong>
+      <p>Pressuring a sick employee to return to work before they are ready may be a breach of duty of care. Keep a record of any such pressure in case you need it later.</p>
+    </div>
+  </div>
+
+  <!-- c) Long hours and rest breaks + not enough hours -->
+  <div id="hours" style="margin-top:2.5rem; padding-top:2rem; border-top:1px solid #e8e4dc;">
+    <h3 style="font-family:'Fraunces',serif; font-size:1.35rem; font-weight:700; margin-bottom:0.75rem;">c) Long hours &amp; rest breaks</h3>
+    <p style="color:var(--slate); margin-bottom:1rem; font-size:0.97rem;">UK law sets clear limits on how many hours you can be made to work and how much rest you must receive. These rules apply to all workers, including migrant workers on visas.</p>
+
+    <div class="card">
+      <h3>Your legal rights on working hours</h3>
+      <ul>
+        <li>Most workers cannot legally be made to work more than <strong>48 hours per week on average</strong> (over a 17-week period)</li>
+        <li>You are entitled to a <strong>rest break of at least 20 minutes</strong> if you work more than 6 hours in a day</li>
+        <li>You must have at least <strong>11 hours rest between shifts</strong></li>
+        <li>You are entitled to <strong>at least one day off per week</strong></li>
+        <li>Night workers have additional protections — if you regularly work nights, contact ACAS for specific advice</li>
+        <li>You have the right to refuse unsafe working conditions without being penalised</li>
+        <li>You should never be pressured to work while injured or unfit</li>
+      </ul>
+    </div>
+
+    <div class="highlight gold">
+      <strong>📋 Keep a record of your hours</strong>
+      <p>If you are being asked to work excessive hours, start writing down your start and finish times each day. Include any breaks you were or were not given. This record will be important if you need to raise a complaint. Screenshots of any rota or messages from your employer are also useful evidence.</p>
+    </div>
+
+    <div class="highlight rust">
+      <strong>⚠ What to do if you are working too many hours</strong>
+      <p>Raise the issue with your employer in writing first. If nothing changes, contact ACAS (0300 123 1100) or the Fair Work Agency (0345 161 6000). You can also raise a formal grievance — see the Grievance Letter section below.</p>
+    </div>
+
+    <div class="highlight sage" style="margin-top:1rem;">
+      <strong>📉 What if you are not getting enough hours?</strong>
+      <p>If your hours are being cut or you are not receiving the hours guaranteed in your contract, this can affect your income and your visa status. For care workers and sponsored workers in particular, not receiving contracted hours can put your sponsorship at risk.</p>
+      <p style="margin-top:0.5rem;">For detailed guidance on this issue, visit the Work Rights Centre's resource for care workers and sponsored workers with sponsor problems: <a href="https://www.workrightscentre.org/immigration-rights/care-workers/sponsor-problems/" target="_blank" style="color:var(--sage);font-weight:600;">workrightscentre.org — Sponsor Problems</a></p>
+    </div>
+  </div>
+
+  <!-- Hours & Visa (moved from standalone section) -->
+  <div id="hoursvisa" style="margin-top:2.5rem; padding-top:2rem; border-top:1px solid #e8e4dc;">
+    <h3 style="font-family:'Fraunces',serif; font-size:1.35rem; font-weight:700; margin-bottom:0.75rem;">What happens if my hours drop?</h3>
+    <p style="color:var(--slate); margin-bottom:1rem; font-size:0.97rem;">Nobody explains this clearly — so here it is plainly. Your Skilled Worker visa has salary and hours conditions attached. Changes to your working pattern can affect your visa status.</p>
+
+    <div class="highlight rust">
+      <strong>⚠ Your salary must stay above the visa threshold</strong>
+      <p>Your Skilled Worker visa was granted based on a minimum salary. If your actual pay drops below that threshold — due to reduced hours, unpaid leave, or any other reason — your sponsor may be in breach of their duties and your visa could be at risk.</p>
+    </div>
+
+    <div class="pathway">
+      <div class="pathway-header">🔀 My hours or pay have changed — what does this mean for my visa?</div>
+      <div class="pathway-question">What has happened?</div>
+      <div class="pathway-options" id="hoursvisa-opts">
+        <button class="pathway-btn" onclick="showPathway('hoursvisa','reduced')"><span class="pb-icon">📉</span> My hours were cut but I am still being paid</button>
+        <button class="pathway-btn" onclick="showPathway('hoursvisa','sick')"><span class="pb-icon">🏥</span> I am on sick leave — does this affect my visa?</button>
+        <button class="pathway-btn" onclick="showPathway('hoursvisa','unpaid')"><span class="pb-icon">🚫</span> I have been put on unpaid leave</button>
+        <button class="pathway-btn" onclick="showPathway('hoursvisa','zero')"><span class="pb-icon">📋</span> I am on a zero-hours contract</button>
+      </div>
+      <div class="pathway-result" id="hoursvisa-reduced">
+        <h4>Hours cut but still being paid</h4>
+        <ol class="pathway-steps">
+          <li>Calculate your new annualised salary. If it falls below your visa's minimum salary threshold, contact a regulated immigration adviser immediately: <a href="https://www.gov.uk/find-an-immigration-adviser" target="_blank" style="color:var(--rust);">gov.uk/find-an-immigration-adviser</a></li>
+          <li>Your sponsor has a duty to report significant changes in your salary to the Home Office. Ask them in writing whether they have done this.</li>
+          <li>If your pay was cut without your agreement, this may be an unlawful deduction — raise a grievance and contact ACAS: <strong>0300 123 1100</strong>.</li>
+          <li>If the cut is temporary, ask for written confirmation of when it will end.</li>
+        </ol>
+        <button class="pathway-back" onclick="resetPathway('hoursvisa')">← Back to options</button>
+      </div>
+      <div class="pathway-result" id="hoursvisa-sick">
+        <h4>Sick leave and your visa — good news</h4>
+        <p>Genuine sick leave — paid or unpaid — is one of the permitted reasons for absence under the Skilled Worker rules.</p>
+        <ol class="pathway-steps">
+          <li>You can take sick leave without this automatically ending your sponsorship, as long as your employer continues to sponsor you.</li>
+          <li>Get a fit note (sick note) from your GP for absences over 7 days — this documents the reason.</li>
+          <li>If your employer tries to dismiss you while you are sick, see the Unfair Dismissal section.</li>
+          <li>SSP counts towards your salary for visa purposes — see the Sick Pay section for current rates.</li>
+          <li>If you are being pressured to return to work before you are well, contact ACAS: <strong>0300 123 1100</strong>.</li>
+        </ol>
+        <button class="pathway-back" onclick="resetPathway('hoursvisa')">← Back to options</button>
+      </div>
+      <div class="pathway-result rust-result" id="hoursvisa-unpaid">
+        <h4>⚠ Unpaid leave — a serious visa concern</h4>
+        <p>This is one of the least understood areas. Unpaid leave can be lawful in limited circumstances, but it has direct visa consequences.</p>
+        <ol class="pathway-steps">
+          <li>Your sponsor can only place you on unpaid leave in very limited situations permitted by the Home Office (e.g. statutory unpaid parental leave, strike action). Other use of unpaid leave may breach their sponsor licence conditions.</li>
+          <li>Prolonged unpaid leave that reduces your effective salary below the visa threshold can jeopardise your sponsorship.</li>
+          <li>Contact a regulated immigration adviser immediately: <a href="https://www.gov.uk/find-an-immigration-adviser" target="_blank" style="color:var(--rust);">gov.uk/find-an-immigration-adviser</a></li>
+          <li>Request written confirmation from your employer of the reason for unpaid leave and its expected duration.</li>
+          <li>If you believe unpaid leave is being used as a form of control, contact the Fair Work Agency: <strong>0345 161 6000</strong>.</li>
+        </ol>
+        <button class="pathway-back" onclick="resetPathway('hoursvisa')">← Back to options</button>
+      </div>
+      <div class="pathway-result gold-result" id="hoursvisa-zero">
+        <h4>Zero-hours contracts and visa status</h4>
+        <p>Zero-hours contracts are complicated for Skilled Worker visas. Most sponsored workers should not be on zero-hours contracts.</p>
+        <ol class="pathway-steps">
+          <li>Skilled Worker visas require a guaranteed minimum salary. If your contract does not guarantee this, it may not meet visa requirements.</li>
+          <li>Check your Certificate of Sponsorship — what salary was stated? Are you actually receiving that?</li>
+          <li>If your actual earnings are consistently below your sponsored salary, contact an immigration adviser: <a href="https://www.gov.uk/find-an-immigration-adviser" target="_blank" style="color:var(--rust);">gov.uk/find-an-immigration-adviser</a></li>
+          <li>If you work in care, check whether your employer is meeting the care worker specific salary requirements — report concerns to the Care Quality Commission and the Fair Work Agency.</li>
+        </ol>
+        <button class="pathway-back" onclick="resetPathway('hoursvisa')">← Back to options</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- d) Wrong pay & unpaid wages -->
+  <div id="wrongpay" style="margin-top:2.5rem; padding-top:2rem; border-top:1px solid #e8e4dc;">
+    <h3 style="font-family:'Fraunces',serif; font-size:1.35rem; font-weight:700; margin-bottom:0.75rem;">d) Wrong pay &amp; unpaid wages</h3>
+  <p style="color:var(--slate); margin-bottom:1rem; font-size:0.97rem;">Being paid less than you are owed — or not paid at all — is one of the most common forms of exploitation faced by migrant workers. You have strong legal rights here.</p>
+
+  <div class="card">
+    <h3>National Minimum Wage — what you must be paid (2025/26)</h3>
+    <ul>
+      <li><strong>Age 21 and over:</strong> £12.21 per hour (National Living Wage)</li>
+      <li><strong>Age 18–20:</strong> £10.00 per hour</li>
+      <li><strong>Under 18 (school leaving age and above):</strong> £7.55 per hour</li>
+      <li>Skilled Worker visa holders must also meet the minimum salary for their specific occupation code — this is set separately by the Home Office</li>
+      <li>Your employer cannot average your pay across weeks to get around minimum wage — each pay period must meet the minimum</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>Common ways employers underpay workers — and what to do</h3>
+    <ul>
+      <li><strong>Deducting money for accommodation, transport, or equipment</strong> — deductions cannot bring your pay below minimum wage</li>
+      <li><strong>Not paying for all hours worked</strong> — including time spent travelling between work sites, waiting time, or mandatory training</li>
+      <li><strong>Not paying holiday pay</strong> — you are entitled to at least 5.6 weeks of paid holiday per year (pro-rata for part-time workers)</li>
+      <li><strong>Paying cash in hand with no payslip</strong> — you have the legal right to a payslip showing your hours and deductions</li>
+      <li><strong>Charging you for uniforms or tools</strong> — if this brings your pay below minimum wage, it is illegal</li>
+    </ul>
+  </div>
+
+  <div class="highlight rust">
+    <strong>⚠ What to do if you are being underpaid</strong>
+    <p>First, raise the issue with your employer in writing and keep a copy. If they do not correct it, you can report to the <strong>Fair Work Agency: 0800 917 2368</strong> (free) — they can investigate and recover unpaid wages on your behalf. You can also bring a claim to the Employment Tribunal. See the <a href="#help" style="color:var(--rust);font-weight:600;">Get Help</a> section for more.</p>
+  </div>
+
+  <div class="highlight sage">
+    <strong>🔒 Reporting underpayment will not affect your visa</strong>
+    <p>The Fair Work Agency is an employment enforcement body, not an immigration authority. Reporting wage theft to them does not trigger any action against your visa or immigration status.</p>
+  </div>
+  </div>
+
+  <!-- f) Public Funds -->
+  <div id="publicfunds" style="margin-top:2.5rem; padding-top:2rem; border-top:1px solid #e8e4dc;">
+    <h3 style="font-family:'Fraunces',serif; font-size:1.35rem; font-weight:700; margin-bottom:0.75rem;">f) Public funds</h3>
+    <p style="color:var(--slate); margin-bottom:1rem; font-size:0.97rem;">Most migrants on a Skilled Worker visa have a "no recourse to public funds" (NRPF) condition, meaning you cannot claim most welfare benefits. However, this does not mean you have no access to any public services. Below is a clear summary of what you can and cannot access in 2026.</p>
+
+    <div class="highlight rust">
+      <strong>⚠ NRPF does not mean no support at all</strong>
+      <p>Many people assume that "no recourse to public funds" means they are cut off from everything. This is not true. Healthcare, schooling, and some emergency support remain available to you. The table below explains what applies in each area.</p>
+    </div>
+
+    <div style="overflow-x:auto; margin:1.25rem 0;">
+      <table style="width:100%; border-collapse:collapse; font-size:0.88rem; background:white; border-radius:12px; overflow:hidden; border:1px solid #e8e4dc;">
+        <thead>
+          <tr style="background:var(--dark); color:var(--cream);">
+            <th style="padding:0.85rem 1rem; text-align:left; font-family:'Fraunces',serif; font-weight:700; width:20%;">Service area</th>
+            <th style="padding:0.85rem 1rem; text-align:left; font-weight:600; width:40%;">✓ What you CAN access</th>
+            <th style="padding:0.85rem 1rem; text-align:left; font-weight:600; width:40%;">✗ What you CANNOT access</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid #e8e4dc;">
+            <td style="padding:0.85rem 1rem; font-weight:700; color:var(--dark); vertical-align:top;">Healthcare</td>
+            <td style="padding:0.85rem 1rem; color:var(--slate); vertical-align:top;">GP and nurse consultations, A&amp;E (emergency care), sexual health services, and treatment for infectious diseases</td>
+            <td style="padding:0.85rem 1rem; color:var(--slate); vertical-align:top;">Some non-emergency hospital treatments (secondary care) may be chargeable unless an exemption applies</td>
+          </tr>
+          <tr style="border-bottom:1px solid #e8e4dc; background:#faf7f2;">
+            <td style="padding:0.85rem 1rem; font-weight:700; color:var(--dark); vertical-align:top;">Children's support</td>
+            <td style="padding:0.85rem 1rem; color:var(--slate); vertical-align:top;">Section 17 support: if a child is "in need" due to destitution, Social Services must provide housing and subsistence</td>
+            <td style="padding:0.85rem 1rem; color:var(--slate); vertical-align:top;">Child Benefit, Disability Living Allowance (DLA) for children</td>
+          </tr>
+          <tr style="border-bottom:1px solid #e8e4dc;">
+            <td style="padding:0.85rem 1rem; font-weight:700; color:var(--dark); vertical-align:top;">Education</td>
+            <td style="padding:0.85rem 1rem; color:var(--slate); vertical-align:top;">State schooling (ages 5–18) and Free School Meals (for eligible low-income NRPF families)</td>
+            <td style="padding:0.85rem 1rem; color:var(--slate); vertical-align:top;">Student loans and maintenance grants for higher education (usually)</td>
+          </tr>
+          <tr style="border-bottom:1px solid #e8e4dc; background:#faf7f2;">
+            <td style="padding:0.85rem 1rem; font-weight:700; color:var(--dark); vertical-align:top;">Domestic abuse</td>
+            <td style="padding:0.85rem 1rem; color:var(--slate); vertical-align:top;">The Migrant Victims of Domestic Abuse Concession (MVDAC) provides 3 months of temporary access to public funds</td>
+            <td style="padding:0.85rem 1rem; color:var(--slate); vertical-align:top;">Long-term social housing or standard benefits without a concession</td>
+          </tr>
+          <tr style="border-bottom:1px solid #e8e4dc;">
+            <td style="padding:0.85rem 1rem; font-weight:700; color:var(--dark); vertical-align:top;">Legal aid</td>
+            <td style="padding:0.85rem 1rem; color:var(--slate); vertical-align:top;">Legal aid for asylum claims, domestic abuse cases, and some immigration matters (subject to means testing)</td>
+            <td style="padding:0.85rem 1rem; color:var(--slate); vertical-align:top;">Publicly funded legal help for most general civil matters</td>
+          </tr>
+          <tr style="background:#faf7f2;">
+            <td style="padding:0.85rem 1rem; font-weight:700; color:var(--dark); vertical-align:top;">Adult social care</td>
+            <td style="padding:0.85rem 1rem; color:var(--slate); vertical-align:top;">Section 18/19 support: for adults with care needs (disability, old age, mental health) that go beyond just poverty</td>
+            <td style="padding:0.85rem 1rem; color:var(--slate); vertical-align:top;">Personal Independence Payment (PIP), Attendance Allowance</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="highlight sage">
+      <strong>📋 Need more detailed advice on NRPF?</strong>
+      <p>The NRPF Network provides detailed guidance on support for people with no recourse to public funds, including information for local councils and support workers. Visit <a href="https://www.nrpfnetwork.org.uk" target="_blank" style="color:var(--sage);font-weight:600;">nrpfnetwork.org.uk</a> for more information. You can also contact <a href="https://www.migrantsatwork.org" target="_blank" style="color:var(--sage);font-weight:600;">Migrants At Work</a> or the <a href="https://www.workrightscentre.org" target="_blank" style="color:var(--sage);font-weight:600;">Work Rights Centre</a> for advice specific to your situation.</p>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+<!-- JOB ENDING -->
+<div class="section" id="ending">
+  <div class="section-tag tag-rust">Section — Job Ending</div>
+  <h2>What happens when your job ends?</h2>
+  <p>If you are on a Skilled Worker visa, losing your job has serious consequences for your immigration status. Here is what you need to know — and how to act fast.</p>
+
+  <div class="tribunal-alert">
+    <h3>⏱ Your 60-day countdown starts immediately</h3>
+    <p>When your sponsorship ends, the Home Office gives you a <strong>60-day grace period</strong> to either find a new sponsor, switch to another visa, or leave the UK. This period begins from the date your sponsor reports the end of your employment — not necessarily when you found out.</p>
+    <strong>Do not wait. Start taking action on day one.</strong>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="t-label">Day 1</div>
+      <h4>Get written confirmation</h4>
+      <p>Ask your employer to confirm in writing the exact date your sponsorship ends. This establishes your 60-day clock clearly.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="t-label">Days 1–7</div>
+      <h4>Contact a regulated immigration adviser</h4>
+      <p>Get advice immediately. Only use an OISC-registered adviser or regulated solicitor — do not use unregulated advisers. Find one at <a href="https://www.gov.uk/find-an-immigration-adviser" target="_blank" style="color:var(--rust);">gov.uk/find-an-immigration-adviser</a> or through the <a href="https://www.oisc.gov.uk/consumers/find-an-adviser/" target="_blank" style="color:var(--rust);">OISC adviser search</a>.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="t-label">Days 1–30</div>
+      <h4>Search for a new sponsor</h4>
+      <p>Search the government's register of licensed sponsors: <a href="https://www.gov.uk/government/publications/register-of-licensed-sponsors-workers" target="_blank" style="color:var(--rust);">gov.uk — Register of Licensed Sponsors</a>. A new employer can apply for a Certificate of Sponsorship (CoS) while you are still in the UK within your grace period.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="t-label">Before Day 60</div>
+      <h4>Apply to switch or extend</h4>
+      <p>Submit your new visa application before the 60 days expire. If you apply in time, you can remain in the UK while it is processed under "section 3C leave".</p>
+    </div>
+  </div>
+
+  <div id="ending-situation" class="pathway">
+    <div class="pathway-header">🔀 My situation — what happens when my job ends?</div>
+    <div class="pathway-question">What best describes your situation?</div>
+    <div class="pathway-options" id="ending-opts">
+      <button class="pathway-btn" onclick="showPathway('ending','dismissed')"><span class="pb-icon">🚫</span> I was dismissed or fired</button>
+      <button class="pathway-btn" onclick="showPathway('ending','resigned')"><span class="pb-icon">🚪</span> I resigned or am thinking of resigning</button>
+      <button class="pathway-btn" onclick="showPathway('ending','redundancy')"><span class="pb-icon">📋</span> I was made redundant</button>
+      <button class="pathway-btn" onclick="showPathway('ending','expired')"><span class="pb-icon">📅</span> My contract ended or was not renewed</button>
+    </div>
+    <div class="pathway-result" id="ending-dismissed">
+      <h4>You were dismissed</h4>
+      <p>You have employment rights and immigration consequences to manage at the same time.</p>
+      <ol class="pathway-steps">
+        <li>Get the dismissal in writing — ask for a written statement of reasons.</li>
+        <li>Check if the dismissal was unfair (see the Unfair Dismissal section) — you may be able to challenge it and get reinstated, restarting your sponsorship.</li>
+        <li>Contact ACAS within 3 months minus 1 day to preserve your employment claim.</li>
+        <li>At the same time, contact a regulated immigration adviser about your 60-day grace period: <a href="https://www.gov.uk/find-an-immigration-adviser" target="_blank" style="color:var(--rust);">gov.uk/find-an-immigration-adviser</a></li>
+        <li>Search the licensed sponsor register for a new employer: <a href="https://www.gov.uk/government/publications/register-of-licensed-sponsors-workers" target="_blank" style="color:var(--rust);">gov.uk — Register of Licensed Sponsors</a></li>
+      </ol>
+      <button class="pathway-back" onclick="resetPathway('ending')">← Back to options</button>
+    </div>
+    <div class="pathway-result gold-result" id="ending-resigned">
+      <h4>⚠ Think carefully before resigning</h4>
+      <p>Resigning voluntarily ends your sponsorship immediately and starts your 60-day clock. You also lose the right to claim unfair dismissal (unless it is constructive dismissal — where your employer forced you out).</p>
+      <ol class="pathway-steps">
+        <li>Before resigning, take advice from ACAS or a solicitor — if your employer has treated you very badly, you may have a constructive dismissal claim instead.</li>
+        <li>If you must resign, try to have a new sponsor lined up first.</li>
+        <li>Do not resign under pressure without first understanding what you are giving up.</li>
+        <li>Find a regulated immigration adviser: <a href="https://www.oisc.gov.uk/consumers/find-an-adviser/" target="_blank" style="color:var(--rust);">oisc.gov.uk — Find an Adviser</a></li>
+      </ol>
+      <button class="pathway-back" onclick="resetPathway('ending')">← Back to options</button>
+    </div>
+    <div class="pathway-result" id="ending-redundancy">
+      <h4>You were made redundant</h4>
+      <p>Redundancy can be a fair reason for dismissal — but the process must be fair, and you may be owed redundancy pay.</p>
+      <ol class="pathway-steps">
+        <li>Check you have at least 2 years' service — if so, you are entitled to statutory redundancy pay.</li>
+        <li>Check the selection process was fair — you cannot be selected for redundancy because of your nationality or immigration status.</li>
+        <li>Your 60-day immigration grace period still applies — start looking for a new sponsor immediately using the licensed sponsor register: <a href="https://www.gov.uk/government/publications/register-of-licensed-sponsors-workers" target="_blank" style="color:var(--rust);">gov.uk — Register of Licensed Sponsors</a></li>
+        <li>If the redundancy feels targeted or unfair, contact ACAS.</li>
+      </ol>
+      <button class="pathway-back" onclick="resetPathway('ending')">← Back to options</button>
+    </div>
+    <div class="pathway-result" id="ending-expired">
+      <h4>Contract ended or not renewed</h4>
+      <p>The non-renewal of a fixed-term contract can still count as a dismissal in law — you may still have rights.</p>
+      <ol class="pathway-steps">
+        <li>If you have 2+ years' service, non-renewal is treated as a dismissal and your employer must show a fair reason.</li>
+        <li>Ask in writing why your contract was not renewed.</li>
+        <li>Your 60-day grace period begins from the end date of your contract.</li>
+        <li>Contact a regulated immigration adviser immediately: <a href="https://www.gov.uk/find-an-immigration-adviser" target="_blank" style="color:var(--rust);">gov.uk/find-an-immigration-adviser</a></li>
+      </ol>
+      <button class="pathway-back" onclick="resetPathway('ending')">← Back to options</button>
+    </div>
+  </div>
+
+  <!-- Unfair Dismissal info (moved from Template Letters section) -->
+  <div id="ending-unfair-dismissal" style="margin-top:2.5rem; padding-top:2rem; border-top:1px solid #e8e4dc;">
+    <h3 style="font-family:'Fraunces',serif; font-size:1.35rem; font-weight:700; margin-bottom:0.75rem;">Unfair Dismissal</h3>
+    <p style="color:var(--slate); margin-bottom:1rem; font-size:0.97rem;">If you have been dismissed (fired) and you believe it was unfair or the correct procedure was not followed, you can raise a formal grievance.</p>
+
+    <div class="tribunal-alert">
+      <h3>⏱ Strict time limits — act now</h3>
+      <p>You must contact ACAS before making an Employment Tribunal claim. Time limits are strict. For full ACAS contact details, see the <a href="#help" style="color:white;font-weight:700;text-decoration:underline;">Get Help</a> section at the bottom of this page.</p>
+      <strong>Most claims: 3 months minus 1 day from dismissal date<br>Some claims: 6 months minus 1 day<br>Interim relief (keep receiving wages during case): 7 days from dismissal</strong>
+      <p style="margin-top:0.75rem; font-size:0.85rem; opacity:0.85;">Do not delay — seek advice immediately if you think you have been unfairly dismissed.</p>
+    </div>
+
+    <div class="highlight sage">
+      <strong>What counts as unfair dismissal?</strong>
+      <ul>
+        <li>Dismissed without a genuine reason</li>
+        <li>No proper investigation before the decision</li>
+        <li>Not given a chance to respond to the allegations</li>
+        <li>Not told of your right to be accompanied at a hearing</li>
+        <li>No prior warnings when your record was good</li>
+        <li>Constructive dismissal — you were forced to resign due to your employer's conduct</li>
+      </ul>
+    </div>
+
+    <p style="color:var(--slate); font-size:0.95rem; margin-top:1rem;">To generate a formal unfair dismissal letter, see the <a href="#dismissal" style="color:var(--rust);font-weight:600;">Template Letters section</a>.</p>
+  </div>
+
+</div>
+
+
+
+<!-- SWITCHING SPONSORS -->
+<div class="section" id="switching">
+  <div class="section-tag tag-gold">Section — Changing Jobs</div>
+  <h2>Changing employers &amp; switching sponsors</h2>
+  <p>You can change jobs while on a Skilled Worker visa — but you must follow the correct process. You cannot simply start a new job without a new Certificate of Sponsorship.</p>
+
+  <div class="highlight sage">
+    <strong>✓ You have the right to change employer</strong>
+    <p>Your visa is tied to your sponsor, not to the UK itself. If your employer treats you badly, you are not trapped. You can switch to a new licensed sponsor while remaining in the UK.</p>
+  </div>
+
+  <div class="pathway">
+    <div class="pathway-header">🔀 Switching sponsor — where are you in the process?</div>
+    <div class="pathway-question">What best describes your situation?</div>
+    <div class="pathway-options" id="switching-opts">
+      <button class="pathway-btn" onclick="showPathway('switching','still-employed')"><span class="pb-icon">💼</span> I am still employed but want to leave</button>
+      <button class="pathway-btn" onclick="showPathway('switching','grace')"><span class="pb-icon">⏳</span> I am in my 60-day grace period</button>
+      <button class="pathway-btn" onclick="showPathway('switching','delay')"><span class="pb-icon">⚠️</span> My employer is delaying or withholding my paperwork</button>
+    </div>
+    <div class="pathway-result" id="switching-still-employed">
+      <h4>Switching while still employed — the safest position</h4>
+      <p>You have time to find the right employer without pressure.</p>
+      <ol class="pathway-steps">
+        <li>Find a new employer who is a licensed sponsor — check the register at <a href="https://www.gov.uk/government/publications/register-of-licensed-sponsors-workers" target="_blank" style="color:var(--rust);">gov.uk — Register of Licensed Sponsors</a>.</li>
+        <li>Get a written job offer with salary and occupation code confirmed.</li>
+        <li>Your new employer assigns you a Certificate of Sponsorship (CoS) — this is their responsibility and cost, not yours.</li>
+        <li>Apply for a change of employment or new Skilled Worker visa — you can do this before leaving your current job.</li>
+        <li>Once approved, give notice to your current employer and start the new role.</li>
+        <li>Typical processing time: 3–8 weeks standard; 1–2 weeks with priority processing (extra fee applies).</li>
+      </ol>
+      <button class="pathway-back" onclick="resetPathway('switching')">← Back to options</button>
+    </div>
+    <div class="pathway-result gold-result" id="switching-grace">
+      <h4>You are in your 60-day grace period — act now</h4>
+      <ol class="pathway-steps">
+        <li>Contact a regulated immigration adviser today: <a href="https://www.gov.uk/find-an-immigration-adviser" target="_blank" style="color:var(--rust);">gov.uk/find-an-immigration-adviser</a></li>
+        <li>Search for a new licensed sponsor urgently: <a href="https://www.gov.uk/government/publications/register-of-licensed-sponsors-workers" target="_blank" style="color:var(--rust);">gov.uk — Register of Licensed Sponsors</a></li>
+        <li>Contact employers directly and be honest about your timeline — many will understand.</li>
+        <li>Once you have a CoS from a new employer, apply for your new visa before the 60 days expire.</li>
+        <li>If you apply in time, "section 3C leave" protects you — you can legally remain in the UK while the application is decided, even if it takes longer than 60 days.</li>
+        <li>Keep evidence of when your sponsorship ended — email, P45, payslip.</li>
+      </ol>
+      <button class="pathway-back" onclick="resetPathway('switching')">← Back to options</button>
+    </div>
+    <div class="pathway-result rust-result" id="switching-delay">
+      <h4>⚠ Your employer is delaying paperwork</h4>
+      <p>Deliberately withholding documents to prevent you moving jobs is unlawful and potentially exploitative.</p>
+      <ol class="pathway-steps">
+        <li>Request in writing (by email) the specific documents you need — P45, reference letter, end-of-sponsorship confirmation.</li>
+        <li>Your employer must issue your P45 promptly after employment ends. Failure to do so can be reported to HMRC.</li>
+        <li>If they are withholding documents to prevent you leaving, contact ACAS: <strong>0300 123 1100</strong>.</li>
+        <li>Contact the Fair Work Agency if you believe you are being controlled or exploited: <strong>0345 161 6000</strong>.</li>
+        <li>Keep a written record of every request you make and every refusal or non-response — dates, times, and what was said.</li>
+      </ol>
+      <button class="pathway-back" onclick="resetPathway('switching')">← Back to options</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Documents you will typically need to switch</h3>
+    <ul>
+      <li>Your current BRP (Biometric Residence Permit) or eVisa details</li>
+      <li>Certificate of Sponsorship (CoS) reference number from your new employer</li>
+      <li>Proof of English language ability (usually already established)</li>
+      <li>Bank statements or evidence of funds (if required)</li>
+      <li>Payslips from your current job</li>
+      <li>P45 from your previous employer once you leave</li>
+      <li>Valid passport</li>
+    </ul>
+  </div>
+</div>
+
+
+
+<!-- TEMPLATE LETTERS -->
+<div class="section" id="templates">
+  <div class="section-tag tag-sage">Template Letters</div>
+  <h2>Template Letters</h2>
+  <p>Use these templates to raise a formal complaint or challenge an unfair dismissal. Fill in the fields and generate a ready-to-send letter.</p>
+</div>
+
+<!-- RAISE A GRIEVANCE -->
+<div class="section" id="grievance">
+  <div class="section-tag tag-sage">Template Letter</div>
+  <h2>Raise a Grievance</h2>
+  <p>A grievance letter is an official written complaint to your employer. Use this if you have been treated unfairly — for example, unsafe working conditions, unpaid wages, discrimination, or bullying.</p>
+
+  <div class="highlight sage">
+    <strong>📋 Tips before you write</strong>
+    <ul>
+      <li>Stick to the facts — dates, what was said, who was present</li>
+      <li>Send by email so you have a timestamp and written record</li>
+      <li>Keep copies of all supporting documents (payslips, messages, letters)</li>
+      <li>Your employer must respond within a reasonable time</li>
+    </ul>
+  </div>
+
+  <div class="template-intro">
+    <h3>Fill in your grievance letter</h3>
+    <p>Complete the fields below. When you click "Generate Letter", a ready-to-send letter will appear that you can copy and paste into an email.</p>
+  </div>
+
+  <div class="form-group">
+    <label>Your full name</label>
+    <input type="text" id="g-name" placeholder="e.g. Maria Kowalski">
+  </div>
+  <div class="form-row">
+    <div class="form-group">
+      <label>Your job title</label>
+      <input type="text" id="g-jobtitle" placeholder="e.g. Warehouse Operative">
+    </div>
+    <div class="form-group">
+      <label>Your department</label>
+      <input type="text" id="g-dept" placeholder="e.g. Logistics">
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Your email address</label>
+    <input type="email" id="g-email" placeholder="your.email@example.com">
+  </div>
+  <div class="form-row">
+    <div class="form-group">
+      <label>Today's date</label>
+      <input type="date" id="g-date">
+    </div>
+    <div class="form-group">
+      <label>HR Manager's name</label>
+      <input type="text" id="g-hrname" placeholder="e.g. James Smith">
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Company name</label>
+    <input type="text" id="g-company" placeholder="e.g. ABC Logistics Ltd">
+  </div>
+
+  <div class="form-group">
+    <label>What is your grievance about? (tick all that apply)</label>
+    <div class="checkbox-group">
+      <label class="checkbox-item"><input type="checkbox" class="g-reason" value="unsafe working conditions or injury at work"> <span>Unsafe working conditions or injury at work</span></label>
+      <label class="checkbox-item"><input type="checkbox" class="g-reason" value="being pressured to work while injured or unwell"> <span>Being pressured to work while injured or unwell</span></label>
+      <label class="checkbox-item"><input type="checkbox" class="g-reason" value="unpaid wages or sick pay being withheld"> <span>Unpaid wages or sick pay being withheld</span></label>
+      <label class="checkbox-item"><input type="checkbox" class="g-reason" value="excessive working hours and insufficient rest breaks"> <span>Excessive working hours / insufficient rest breaks</span></label>
+      <label class="checkbox-item"><input type="checkbox" class="g-reason" value="bullying, harassment or unfair treatment"> <span>Bullying, harassment or unfair treatment</span></label>
+      <label class="checkbox-item"><input type="checkbox" class="g-reason" value="discrimination based on my nationality, race or background"> <span>Discrimination based on nationality, race or background</span></label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Describe what happened (include dates, names, and what was said or done)</label>
+    <textarea id="g-events" placeholder="Example: On 3 March 2025, I reported a back injury to my supervisor, John Davies. He told me I could not take time off and that I would lose shifts if I did. I was not told about the accident book or my right to sick pay..."></textarea>
+  </div>
+
+  <div class="form-group">
+    <label>What outcome are you asking for?</label>
+    <div class="checkbox-group">
+      <label class="checkbox-item"><input type="checkbox" class="g-outcome" value="a full and impartial investigation into my complaint"> <span>A full and impartial investigation</span></label>
+      <label class="checkbox-item"><input type="checkbox" class="g-outcome" value="payment of wages or sick pay that I am owed"> <span>Payment of wages or sick pay I am owed</span></label>
+      <label class="checkbox-item"><input type="checkbox" class="g-outcome" value="written confirmation of my employment rights"> <span>Written confirmation of my employment rights</span></label>
+      <label class="checkbox-item"><input type="checkbox" class="g-outcome" value="a review of health and safety practices"> <span>A review of health and safety practices</span></label>
+      <label class="checkbox-item"><input type="checkbox" class="g-outcome" value="an apology and assurance this will not happen again"> <span>An apology and assurance this will not happen again</span></label>
+    </div>
+  </div>
+
+  <div class="btn-row">
+    <button class="btn btn-primary" onclick="generateGrievance()">Generate Letter</button>
+    <button class="btn btn-secondary" onclick="copyLetter('grievance-preview')">Copy to clipboard</button>
+  </div>
+  <div class="preview-area" id="grievance-preview"></div>
+</div>
+
+
+
+<!-- UNFAIR DISMISSAL LETTER -->
+<div class="section" id="dismissal">
+  <div class="section-tag tag-rust">Template Letter</div>
+  <h2>Unfair Dismissal</h2>
+  <p>If you have been dismissed (fired) and you believe it was unfair or the correct procedure was not followed, use this template to write a formal letter. For background on time limits and what counts as unfair dismissal, see the <a href="#ending-unfair-dismissal" style="color:var(--rust);font-weight:600;">Job Ending section</a>.</p>
+
+  <div class="template-intro">
+    <h3>Fill in your unfair dismissal letter</h3>
+    <p>Complete the fields below to generate a formal letter. Send it to HR by email to create a written record.</p>
+  </div>
+
+  <div class="form-group">
+    <label>Your full name</label>
+    <input type="text" id="d-name" placeholder="e.g. Maria Kowalski">
+  </div>
+  <div class="form-row">
+    <div class="form-group">
+      <label>Your job title</label>
+      <input type="text" id="d-jobtitle" placeholder="e.g. Warehouse Operative">
+    </div>
+    <div class="form-group">
+      <label>HR Manager's name</label>
+      <input type="text" id="d-hrname" placeholder="e.g. James Smith">
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Company name</label>
+    <input type="text" id="d-company" placeholder="e.g. ABC Logistics Ltd">
+  </div>
+  <div class="form-row">
+    <div class="form-group">
+      <label>Date employment started</label>
+      <input type="date" id="d-startdate">
+    </div>
+    <div class="form-group">
+      <label>Date of dismissal</label>
+      <input type="date" id="d-enddate">
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Reason given by employer for dismissal</label>
+    <input type="text" id="d-reason" placeholder="e.g. Redundancy / Poor performance / Misconduct">
+  </div>
+
+  <div class="form-group">
+    <label>Why do you believe your dismissal was unfair? (tick all that apply)</label>
+    <div class="checkbox-group">
+      <label class="checkbox-item"><input type="checkbox" class="d-reason" value="The reason given for my dismissal was not genuine or did not justify dismissal"> <span>The reason given was not genuine or did not justify dismissal</span></label>
+      <label class="checkbox-item"><input type="checkbox" class="d-reason" value="No proper investigation was carried out before the decision to dismiss me"> <span>No proper investigation was carried out</span></label>
+      <label class="checkbox-item"><input type="checkbox" class="d-reason" value="I was not given sufficient notice of the disciplinary hearing"> <span>I was not given sufficient notice of the hearing</span></label>
+      <label class="checkbox-item"><input type="checkbox" class="d-reason" value="I was not given the opportunity to respond to the allegations against me"> <span>I was not given the opportunity to respond</span></label>
+      <label class="checkbox-item"><input type="checkbox" class="d-reason" value="I was not informed of my right to be accompanied at the disciplinary hearing"> <span>I was not told of my right to be accompanied</span></label>
+      <label class="checkbox-item"><input type="checkbox" class="d-reason" value="The employer did not follow its own disciplinary procedure"> <span>The employer did not follow its own procedure</span></label>
+      <label class="checkbox-item"><input type="checkbox" class="d-reason" value="I had no prior warnings and my conduct and performance record did not justify dismissal"> <span>I had no prior warnings and my record was good</span></label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Account of events (dates, names, what was said or done)</label>
+    <textarea id="d-events" placeholder="Example: On 15 January 2025, I was called into a meeting with no prior notice. I was told my employment was being terminated. I was not told I could bring a colleague or union representative..."></textarea>
+  </div>
+
+  <div class="form-group">
+    <label>How has this dismissal affected you?</label>
+    <div class="checkbox-group">
+      <label class="checkbox-item"><input type="checkbox" class="d-impact" value="loss of income and financial hardship"> <span>Loss of income and financial hardship</span></label>
+      <label class="checkbox-item"><input type="checkbox" class="d-impact" value="difficulty obtaining new employment"> <span>Difficulty finding new work</span></label>
+      <label class="checkbox-item"><input type="checkbox" class="d-impact" value="stress, anxiety, and impact on my mental health and wellbeing"> <span>Stress, anxiety and impact on mental health</span></label>
+      <label class="checkbox-item"><input type="checkbox" class="d-impact" value="impact on my family and caring responsibilities"> <span>Impact on my family or caring responsibilities</span></label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>What outcome are you requesting? (tick all that apply)</label>
+    <div class="checkbox-group">
+      <label class="checkbox-item"><input type="checkbox" class="d-outcome" value="a full and impartial investigation into the circumstances of my dismissal"> <span>A full and impartial investigation</span></label>
+      <label class="checkbox-item"><input type="checkbox" class="d-outcome" value="written reasons for the dismissal decision"> <span>Written reasons for the dismissal decision</span></label>
+      <label class="checkbox-item"><input type="checkbox" class="d-outcome" value="reinstatement or re-engagement"> <span>Reinstatement or re-engagement</span></label>
+      <label class="checkbox-item"><input type="checkbox" class="d-outcome" value="compensation for my financial losses resulting from this dismissal"> <span>Compensation for financial losses</span></label>
+      <label class="checkbox-item"><input type="checkbox" class="d-outcome" value="a review of the company's disciplinary procedures"> <span>A review of disciplinary procedures</span></label>
+    </div>
+  </div>
+
+  <div class="btn-row">
+    <button class="btn btn-primary" onclick="generateDismissal()">Generate Letter</button>
+    <button class="btn btn-secondary" onclick="copyLetter('dismissal-preview')">Copy to clipboard</button>
+  </div>
+  <div class="preview-area" id="dismissal-preview"></div>
+</div>
+
+
+
+<!-- REPORTING & VISA -->
+<div class="section" id="reporting">
+  <div class="section-tag tag-rust">Section — Reporting</div>
+  <h2>If I report exploitation, will I lose my visa?</h2>
+  <p>This is one of the most common fears — and the most misunderstood. Here is the reality.</p>
+
+  <div class="highlight sage">
+    <strong>🔒 Reporting exploitation does not automatically end your visa</strong>
+    <p>Employment rights apply regardless of immigration status. Raising a grievance, contacting ACAS, or making an Employment Tribunal claim does not trigger a Home Office investigation. These are civil processes, not immigration enforcement actions.</p>
+  </div>
+
+  <div class="card">
+    <h3>Who protects you and how</h3>
+    <ul>
+      <li>
+        <strong>ACAS</strong> — neutral and confidential. Helps resolve disputes. Contacting ACAS does not involve immigration authorities.
+        <details style="margin-top:0.5rem;">
+          <summary style="cursor:pointer; color:var(--rust); font-weight:600; font-size:0.88rem;">What to expect when you contact ACAS ▾</summary>
+          <div style="margin-top:0.5rem; font-size:0.88rem; color:var(--slate); line-height:1.6; padding-left:0.75rem; border-left:3px solid var(--rust);">
+            <p>When you contact ACAS, you will speak to an adviser who will listen to your situation and explain your rights. Everything you share is confidential. ACAS will not contact your employer or immigration authorities without your permission.</p>
+            <p style="margin-top:0.4rem;">If you decide to proceed to Early Conciliation, ACAS will contact your employer on your behalf and attempt to reach a settlement. Both sides are invited to negotiate — you do not have to speak directly to your employer.</p>
+            <p style="margin-top:0.4rem;"><strong>Typical timelines:</strong> Early Conciliation lasts up to 6 weeks. If a settlement is not reached, ACAS issues a certificate allowing you to make an Employment Tribunal claim. You are under no obligation to settle — you can proceed to tribunal if you wish.</p>
+          </div>
+        </details>
+      </li>
+      <li>
+        <strong>Employment Tribunals</strong> — you can bring a claim regardless of visa status. Tribunals do not report claimants to the Home Office.
+        <details style="margin-top:0.5rem;">
+          <summary style="cursor:pointer; color:var(--rust); font-weight:600; font-size:0.88rem;">What to expect from the Employment Tribunal process ▾</summary>
+          <div style="margin-top:0.5rem; font-size:0.88rem; color:var(--slate); line-height:1.6; padding-left:0.75rem; border-left:3px solid var(--rust);">
+            <p><strong>Step 1 — You must contact ACAS first.</strong> Before making a tribunal claim, you are legally required to notify ACAS and go through Early Conciliation (see above). ACAS will issue a certificate once this is complete.</p>
+            <p style="margin-top:0.4rem;"><strong>Step 2 — Submit your claim.</strong> Use the ACAS certificate to submit an ET1 claim form online at <a href="https://www.gov.uk/employment-tribunals" target="_blank" style="color:var(--rust);">gov.uk/employment-tribunals</a>. Most claims are free to submit.</p>
+            <p style="margin-top:0.4rem;"><strong>Strict time limits apply:</strong> Most claims must be submitted within 3 months minus 1 day from the event (e.g. dismissal, underpayment). Do not delay.</p>
+            <p style="margin-top:0.4rem;"><strong>Typical timelines:</strong> Simple claims may be heard within 6–12 months. Complex cases can take longer. You will receive a case number and hearing date by post. You can represent yourself — you do not need a lawyer, though legal support helps.</p>
+            <p style="margin-top:0.4rem;"><strong>Your immigration status:</strong> Tribunals do not share information with the Home Office. You have the right to bring a claim regardless of your visa status.</p>
+          </div>
+        </details>
+      </li>
+      <li>
+        <strong>Whistleblowing law (Public Interest Disclosure Act 1998)</strong> — protects you from dismissal or unfair treatment if you report wrongdoing at work, including health and safety violations or illegal activity.
+        <details style="margin-top:0.5rem;">
+          <summary style="cursor:pointer; color:var(--rust); font-weight:600; font-size:0.88rem;">Important: whistleblowing and your immigration status ▾</summary>
+          <div style="margin-top:0.5rem; font-size:0.88rem; color:var(--slate); line-height:1.6; padding-left:0.75rem; border-left:3px solid var(--rust);">
+            <p>Whistleblowing law protects you from being dismissed or mistreated by your <em>employer</em> for reporting wrongdoing. However, <strong>it does not protect your immigration status</strong>.</p>
+            <p style="margin-top:0.4rem;">This means: if you report your employer and they withdraw their sponsorship as a result, whistleblowing law may give you a legal claim against them — but it does not automatically prevent your visa from being affected. You could find yourself without a sponsor, which puts your visa at risk.</p>
+            <p style="margin-top:0.4rem;"><strong>Before whistleblowing, you should:</strong></p>
+            <ul style="padding-left:1rem; margin-top:0.25rem;">
+              <li>Understand that you may need to find a new sponsor quickly</li>
+              <li>Consider whether you can line up a new licensed employer first</li>
+              <li>Seek advice from a regulated immigration adviser and an employment lawyer</li>
+              <li>Contact Migrants At Work, Work Rights Centre, or Workers Support Centre (Scotland) for guidance specific to your situation</li>
+            </ul>
+          </div>
+        </details>
+      </li>
+      <li>
+        <strong>The Fair Work Agency (FWA)</strong> — enforces employment rights including minimum wage. Workers can report without triggering visa action.
+        <details style="margin-top:0.5rem;">
+          <summary style="cursor:pointer; color:var(--rust); font-weight:600; font-size:0.88rem;">Important note on FWA reporting ▾</summary>
+          <div style="margin-top:0.5rem; font-size:0.88rem; color:var(--slate); line-height:1.6; padding-left:0.75rem; border-left:3px solid var(--rust);">
+            <p>In theory, reporting to the FWA does not trigger immigration enforcement. However, we do not have full information or assurance about all outcomes in practice.</p>
+            <p style="margin-top:0.4rem;">Before contacting the FWA, we recommend reaching out to one of these organisations who can advise you on your specific situation:</p>
+            <ul style="padding-left:1rem; margin-top:0.25rem;">
+              <li><strong>Migrants At Work</strong> — <a href="mailto:info@migrantsatwork.org" style="color:var(--rust);">info@migrantsatwork.org</a></li>
+              <li><strong>Work Rights Centre</strong> — <a href="https://www.workrightscentre.org" target="_blank" style="color:var(--rust);">workrightscentre.org</a></li>
+              <li><strong>Workers Support Centre</strong> (if in Scotland)</li>
+            </ul>
+          </div>
+        </details>
+      </li>
+    </ul>
+  </div>
+
+  <div class="pathway">
+    <div class="pathway-header">🔀 I want to report something — what is the right route?</div>
+    <div class="pathway-question">What do you want to report?</div>
+    <div class="pathway-options" id="reporting-opts">
+      <button class="pathway-btn" onclick="showPathway('reporting','unpaid')"><span class="pb-icon">💷</span> Unpaid wages or illegal deductions</button>
+      <button class="pathway-btn" onclick="showPathway('reporting','safety')"><span class="pb-icon">⚠️</span> Health and safety violations</button>
+      <button class="pathway-btn" onclick="showPathway('reporting','exploitation')"><span class="pb-icon">🆘</span> I think I am being exploited or controlled</button>
+      <button class="pathway-btn" onclick="showPathway('reporting','discrimination')"><span class="pb-icon">⚖️</span> Discrimination or unfair treatment</button>
+    </div>
+    <div class="pathway-result" id="reporting-unpaid">
+      <h4>Unpaid wages or illegal deductions</h4>
+      <ol class="pathway-steps">
+        <li>First, raise a formal grievance with your employer in writing (see the Grievance Letter section above).</li>
+        <li>If unresolved, contact ACAS for Early Conciliation — free and confidential: <strong>0300 123 1100</strong>.</li>
+        <li>Report to the Fair Work Agency: <strong>0800 917 2368</strong> (free) or <a href="https://www.gov.uk/pay-and-work-rights" target="_blank" style="color:var(--rust);">gov.uk/pay-and-work-rights</a></li>
+        <li>You can bring a claim to the Employment Tribunal — you do not need a lawyer.</li>
+      </ol>
+      <button class="pathway-back" onclick="resetPathway('reporting')">← Back to options</button>
+    </div>
+    <div class="pathway-result" id="reporting-safety">
+      <h4>Health and safety violations</h4>
+      <ol class="pathway-steps">
+        <li>Report to your employer in writing first and keep a copy.</li>
+        <li>If nothing changes, report to the Health and Safety Executive (HSE): <a href="https://www.hse.gov.uk/contact/concerns.htm" target="_blank" style="color:var(--rust);">hse.gov.uk/contact/concerns</a></li>
+        <li>You are legally protected from dismissal for raising health and safety concerns.</li>
+        <li>If you were injured, see the Injury at Work section for evidence-gathering steps.</li>
+      </ol>
+      <button class="pathway-back" onclick="resetPathway('reporting')">← Back to options</button>
+    </div>
+    <div class="pathway-result rust-result" id="reporting-exploitation">
+      <h4>You think you are being exploited or controlled</h4>
+      <ol class="pathway-steps">
+        <li>Contact the Fair Work Agency: <strong>0345 161 6000</strong>. They investigate labour exploitation and work to support victims.</li>
+        <li>Contact Migrant Help: <strong>0808 8010 503</strong> (free, 24 hours) for confidential support.</li>
+        <li>Consider whether the National Referral Mechanism (NRM) applies — see the NRM section below for honest information about what this means in practice.</li>
+        <li>If you are in immediate danger, call <strong>999</strong>.</li>
+      </ol>
+      <button class="pathway-back" onclick="resetPathway('reporting')">← Back to options</button>
+    </div>
+    <div class="pathway-result" id="reporting-discrimination">
+      <h4>Discrimination or unfair treatment</h4>
+      <ol class="pathway-steps">
+        <li>Keep a detailed record — dates, what was said or done, who was present.</li>
+        <li>Raise a formal grievance (see Grievance Letter section above).</li>
+        <li>Contact ACAS for Early Conciliation: <strong>0300 123 1100</strong>.</li>
+        <li>If unresolved, bring a claim to the Employment Tribunal under the Equality Act 2010. Claims must be made within 3 months minus 1 day.</li>
+        <li>The Equality and Human Rights Commission can also provide guidance: <a href="https://www.equalityhumanrights.com" target="_blank" style="color:var(--rust);">equalityhumanrights.com</a></li>
+      </ol>
+      <button class="pathway-back" onclick="resetPathway('reporting')">← Back to options</button>
+    </div>
+  </div>
+
+  <!-- Fair Work Agency subsection -->
+  <div id="fwa" style="margin-top:2.5rem; padding-top:2rem; border-top:1px solid #e8e4dc;">
+    <h3 style="font-family:'Fraunces',serif; font-size:1.35rem; font-weight:700; margin-bottom:0.75rem;">The Fair Work Agency</h3>
+  <p>The Fair Work Agency (FWA) is a government body created in 2025 to bring together enforcement of workers' rights into one place. Before it existed, these responsibilities were split across several different agencies, making it confusing for workers to know who to contact.</p>
+
+  <div class="highlight rust">
+    <strong>⚠ Read this carefully before making any decision</strong>
+    <p>In theory, reporting to the FWA does not trigger immigration enforcement. However, we do not have full information or assurance about all outcomes in practice.</p>
+    <p style="margin-top:0.5rem;">Before contacting the FWA, we recommend reaching out to one of these organisations who can advise you on your specific situation:</p>
+    <ul>
+      <li><strong>Migrants At Work</strong> — <a href="mailto:info@migrantsatwork.org" style="color:var(--rust);font-weight:600;">info@migrantsatwork.org</a></li>
+      <li><strong>Work Rights Centre</strong> — <a href="http://workrightscentre.org" target="_blank" style="color:var(--rust);font-weight:600;">workrightscentre.org</a></li>
+      <li><strong>Workers Support Centre</strong> (if in Scotland) — <a href="https://workersupportcentre.org.uk/" target="_blank" style="color:var(--rust);font-weight:600;">workersupportcentre.org.uk</a></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>What the Fair Work Agency does</h3>
+    <ul>
+      <li>Enforces the National Minimum Wage and National Living Wage — they can investigate employers who underpay workers</li>
+      <li>Ensures workers receive their statutory holiday pay entitlement</li>
+      <li>Oversees the licensing of labour providers in high-risk sectors</li>
+      <li>Enforces rules on illegal employment agency fees charged to workers</li>
+      <li>Can inspect employer records and issue penalties for non-compliance</li>
+      <li>Workers can report complaints — anonymously if preferred</li>
+    </ul>
+  </div>
+
+  <div class="highlight gold">
+    <strong>📞 How to contact the Fair Work Agency</strong>
+    <p>Reports can be made online or by phone. You can report anonymously. This is a civil enforcement process — it does not trigger immigration enforcement.</p>
+    <p style="margin-top:0.5rem;"><a href="https://www.gov.uk/pay-and-work-rights" target="_blank" style="color:#a07c2a;font-weight:600;">gov.uk/pay-and-work-rights</a> · Helpline: <strong>0800 917 2368</strong> (free)</p>
+  </div>
+
+  <div class="card">
+    <h3>How is the FWA different from ACAS?</h3>
+    <ul>
+      <li><strong>ACAS</strong> advises and mediates — it helps resolve disputes but cannot force employers to pay</li>
+      <li><strong>The Fair Work Agency</strong> is an enforcement body — it can investigate employers, issue fines, and compel payment of owed wages</li>
+      <li>Both can be contacted without affecting your immigration status</li>
+      <li>For individual disputes, ACAS is usually the first step. For systematic underpayment or illegal deductions, the FWA can be more effective</li>
+    </ul>
+  </div>
+  </div>
+
+  <!-- NRM subsection -->
+  <div id="nrm" style="margin-top:2.5rem; padding-top:2rem; border-top:1px solid #e8e4dc;">
+    <h3 style="font-family:'Fraunces',serif; font-size:1.35rem; font-weight:700; margin-bottom:0.75rem;">The National Referral Mechanism (NRM)</h3>
+  <p>The NRM is the UK government's process for identifying and supporting victims of modern slavery and human trafficking. It is important to understand both what it offers and what it means for your visa — because it is not right for everyone.</p>
+
+  <div class="highlight rust">
+    <strong>⚠ Read this carefully before making any decision</strong>
+    <p>Entering the NRM has real consequences for your visa and your right to work. It is not a simple "safe route" — it is a process designed for serious exploitation situations. Get specialist advice before deciding.</p>
+  </div>
+
+  <div class="card">
+    <h3>What the NRM does</h3>
+    <ul>
+      <li>Identifies people who may be victims of modern slavery or human trafficking</li>
+      <li>Gives a recovery period of at least 45 days during which you cannot be removed from the UK</li>
+      <li>Provides access to support including safe accommodation, legal advice, and a small weekly financial allowance — <strong>note that this allowance is less than you would earn under your work contract</strong></li>
+      <li>During the NRM process, <strong>you lose your right to work</strong> — you cannot continue in your current employment while your case is being assessed</li>
+      <li>A "Positive Conclusive Grounds" decision can give you 12 months Temporary Permission to Stay — but this is not a sponsored visa and does not automatically give you the right to work</li>
+    </ul>
+  </div>
+
+  <div class="pathway">
+    <div class="pathway-header">🔀 NRM — understanding your options</div>
+    <div class="pathway-question">What is your priority right now?</div>
+    <div class="pathway-options" id="nrm-opts">
+      <button class="pathway-btn" onclick="showPathway('nrm','keep-sponsor')"><span class="pb-icon">💼</span> I want to keep my sponsored visa and right to work</button>
+      <button class="pathway-btn" onclick="showPathway('nrm','safety')"><span class="pb-icon">🆘</span> I am in danger and need immediate protection</button>
+      <button class="pathway-btn" onclick="showPathway('nrm','understand')"><span class="pb-icon">❓</span> I want to understand what entering the NRM actually means</button>
+    </div>
+    <div class="pathway-result" id="nrm-keep-sponsor">
+      <h4>Keeping your sponsored visa — alternatives to the NRM</h4>
+      <p>If your priority is to keep your right to work and sponsored visa, the NRM may not be the right route. Consider these alternatives first:</p>
+      <ol class="pathway-steps">
+        <li><strong>Switch sponsor</strong> — if you are being exploited, you can leave your employer and find a new licensed sponsor without entering the NRM (see the Switching Sponsors section).</li>
+        <li><strong>Report to the Fair Work Agency</strong> — you can report exploitation while keeping your visa. These are enforcement bodies, not immigration control.</li>
+        <li><strong>Raise a grievance or Employment Tribunal claim</strong> — you can take legal action against your employer while remaining on your sponsored visa.</li>
+        <li><strong>Get regulated immigration advice first</strong>: <a href="https://www.gov.uk/find-an-immigration-adviser" target="_blank" style="color:var(--rust);">gov.uk/find-an-immigration-adviser</a></li>
+      </ol>
+      <p style="margin-top:0.75rem; font-size:0.85rem; color:var(--rust); font-weight:600;">Important: Entering the NRM typically suspends your current visa and right to work while your case is assessed. This process can take many months.</p>
+      <button class="pathway-back" onclick="resetPathway('nrm')">← Back to options</button>
+    </div>
+    <div class="pathway-result rust-result" id="nrm-safety">
+      <h4>You need immediate protection — your safety comes first</h4>
+      <ol class="pathway-steps">
+        <li>Call <strong>999</strong> if you are in immediate danger.</li>
+        <li>Contact Migrant Help: <strong>0808 8010 503</strong> (free, 24 hours) — they can refer you to the NRM and arrange immediate support.</li>
+        <li>Contact the Salvation Army's Modern Slavery helpline: <strong>0300 303 8151</strong> (free, 24 hours).</li>
+        <li>Contact the Fair Work Agency: <strong>0345 161 6000</strong>.</li>
+        <li>You can be referred to the NRM by police, social services, the Fair Work Agency, or approved charities — you do not have to self-refer.</li>
+      </ol>
+      <button class="pathway-back" onclick="resetPathway('nrm')">← Back to options</button>
+    </div>
+    <div class="pathway-result gold-result" id="nrm-understand">
+      <h4>What the NRM means in practice — an honest explanation</h4>
+      <ol class="pathway-steps">
+        <li><strong>Referral</strong> — you are referred by an authorised body (police, Fair Work Agency, certain charities). You cannot self-refer directly.</li>
+        <li><strong>Reasonable Grounds decision</strong> — within 5 days, a decision is made on whether there is reason to believe you are a victim. If yes, you enter the support system.</li>
+        <li><strong>Recovery period</strong> — at least 45 days of support including accommodation, legal advice, and a small weekly allowance. During this time you cannot be removed from the UK.</li>
+        <li><strong>Conclusive Grounds decision</strong> — a full assessment of whether you are a confirmed victim. This can take many months.</li>
+        <li><strong>If positive</strong> — you may be granted 12 months Temporary Permission to Stay. This does not automatically include the right to work — you must apply separately.</li>
+        <li><strong>Your current visa</strong> — once you enter the NRM, your sponsored visa is effectively suspended. Returning to sponsored employment during NRM assessment is complicated and requires specialist advice.</li>
+      </ol>
+      <p style="margin-top:0.75rem; font-size:0.85rem; color:#a07c2a; font-weight:600;">Get specialist advice before proceeding: <a href="https://www.gov.uk/find-an-immigration-adviser" target="_blank" style="color:#a07c2a;">gov.uk/find-an-immigration-adviser</a></p>
+      <button class="pathway-back" onclick="resetPathway('nrm')">← Back to options</button>
+    </div>
+  </div>
+
+  <div class="contact-card" style="margin-top:1.5rem;">
+    <div class="contact-icon">🆘</div>
+    <div>
+      <h4>Modern Slavery helpline (Salvation Army)</h4>
+      <p>24-hour support, referral to NRM, safe accommodation.<br><a href="tel:03003038151">0300 303 8151</a> (free, 24 hours)</p>
+    </div>
+  </div>
+  <div class="contact-card">
+    <div class="contact-icon">🌍</div>
+    <div>
+      <h4>Migrant Help</h4>
+      <p>Free, confidential support for migrants in difficulty. Can refer to the NRM and provide legal advice.<br><a href="tel:08088010503">0808 8010 503</a> (free, 24 hours)</p>
+    </div>
+  </div>
+  </div>
+
+</div>
+
+
+
+<!-- GET HELP -->
+<div class="section" id="help">
+  <div class="section-tag tag-slate">Get Help</div>
+  <h2>Where to get help</h2>
+  <p>You do not have to deal with this alone. These organisations offer free, confidential advice. Contacting them will not affect your immigration status.</p>
+
+  <div class="contact-card">
+    <div class="contact-icon">📞</div>
+    <div>
+      <h4>ACAS (Advisory, Conciliation and Arbitration Service)</h4>
+      <p>Free, impartial advice on employment rights, disputes, and how to make a tribunal claim. The first step before any Employment Tribunal claim.<br>
+      <a href="tel:03001231100">0300 123 1100</a> · Mon–Fri 8am–6pm · <a href="https://www.acas.org.uk" target="_blank">acas.org.uk</a></p>
+    </div>
+  </div>
+
+  <div class="contact-card">
+    <div class="contact-icon">💬</div>
+    <div>
+      <h4>Citizens Advice</h4>
+      <p>Free confidential advice on employment, benefits, housing and more. Available online, by phone, or in person at local offices.<br>
+      <a href="https://www.citizensadvice.org.uk" target="_blank">citizensadvice.org.uk</a></p>
+    </div>
+  </div>
+
+  <div class="contact-card">
+    <div class="contact-icon">⚖️</div>
+    <div>
+      <h4>Employment Tribunal</h4>
+      <p>If internal processes fail, you can make a claim to an Employment Tribunal. You must contact ACAS first. Strict time limits apply — do not delay.<br>
+      <a href="https://www.gov.uk/employment-tribunals" target="_blank">gov.uk/employment-tribunals</a></p>
+    </div>
+  </div>
+
+  <div class="contact-card">
+    <div class="contact-icon">🔍</div>
+    <div>
+      <h4>Fair Work Agency (FWA)</h4>
+      <p>Enforces workers' rights including minimum wage, holiday pay, and illegal recruitment fees. Can investigate employers and recover wages on your behalf. Reports underpayment, unpaid holiday pay, and illegal recruitment fees.<br>
+      <a href="tel:08009172368">0800 917 2368</a> (free) · Phone: <a href="tel:03451616000">0345 161 6000</a> · Email: <a href="mailto:contact@fairworkagency.gov.uk">contact@fairworkagency.gov.uk</a> · <a href="https://www.gov.uk/pay-and-work-rights" target="_blank">gov.uk/pay-and-work-rights</a></p>
+    </div>
+  </div>
+
+  <div class="contact-card">
+    <div class="contact-icon">🌍</div>
+    <div>
+      <h4>Migrant Help</h4>
+      <p>Free, confidential support for migrant workers including referral to the NRM and immigration legal advice.<br>
+      <a href="tel:08088010503">0808 8010 503</a> (free, 24 hours) · <a href="https://www.migranthelpuk.org" target="_blank">migranthelpuk.org</a></p>
+    </div>
+  </div>
+
+  <div class="contact-card">
+    <div class="contact-icon">🤝</div>
+    <div>
+      <h4>Your trade union</h4>
+      <p>If you are a union member, contact your union rep immediately. They can accompany you to meetings, provide legal support, and negotiate on your behalf. If you are not a member, consider joining — membership is often low cost.</p>
+    </div>
+  </div>
+
+  <div class="contact-card">
+    <div class="contact-icon">🧭</div>
+    <div>
+      <h4>Find a regulated immigration adviser</h4>
+      <p>Only use OISC-registered advisers or regulated solicitors for immigration advice. Do not use unregulated advisers.<br>
+      <a href="https://www.gov.uk/find-an-immigration-adviser" target="_blank">gov.uk/find-an-immigration-adviser</a> · <a href="https://www.oisc.gov.uk/consumers/find-an-adviser/" target="_blank">OISC adviser search</a></p>
+    </div>
+  </div>
+
+  <div class="highlight sage" style="margin-top:1.5rem;">
+    <strong>🔒 All of these services are confidential</strong>
+    <p>Contacting ACAS, Citizens Advice, or the Fair Work Agency does not automatically involve your employer, the government, or immigration authorities. If you are concerned about confidentiality in your specific situation, ask the adviser directly before sharing personal details.</p>
+  </div>
+
+  <h3 style="font-family:'Fraunces',serif; font-size:1.2rem; font-weight:700; margin:2rem 0 0.75rem;">Charities that can support you</h3>
+  <p style="color:var(--slate); font-size:0.95rem; margin-bottom:1rem;">These organisations specialise in supporting migrant workers and can provide advice, advocacy, and practical help.</p>
+
+  <div class="contact-card">
+    <div class="contact-icon">🌐</div>
+    <div>
+      <h4>Migrant Rights Network</h4>
+      <p>Policy and advocacy organisation working to advance the rights of migrants in the UK. Publishes guides and resources on migrant workers' rights.<br>
+      <a href="https://www.migrantsrights.org.uk" target="_blank">migrantsrights.org.uk</a></p>
+    </div>
+  </div>
+
+  <div class="contact-card">
+    <div class="contact-icon">⚖️</div>
+    <div>
+      <h4>Work Rights Centre</h4>
+      <p>Provides free employment and immigration advice to migrants and EU citizens. Particularly experienced with care workers and sponsored workers.<br>
+      <a href="https://www.workrightscentre.org" target="_blank">workrightscentre.org</a></p>
+    </div>
+  </div>
+
+  <div class="contact-card">
+    <div class="contact-icon">🏴󠁧󠁢󠁳󠁣󠁴󠁿</div>
+    <div>
+      <h4>Workers Support Centre (Scotland)</h4>
+      <p>Based in Scotland, provides free advice and support to migrant workers on employment rights, exploitation, and access to services.<br>
+      <a href="https://www.workerssupportcentre.org" target="_blank">workerssupportcentre.org</a></p>
+    </div>
+  </div>
+
+  <div class="contact-card">
+    <div class="contact-icon">✊</div>
+    <div>
+      <h4>Migrants At Work</h4>
+      <p>Created this guide. We support migrant workers — particularly those on sponsored visas — through advice, resources, and community support.<br>
+      <a href="mailto:info@migrantsatwork.org">info@migrantsatwork.org</a></p>
+    </div>
+  </div>
+
+  <h3 style="font-family:'Fraunces',serif; font-size:1.2rem; font-weight:700; margin:2rem 0 0.75rem;">Free legal advice</h3>
+  <p style="color:var(--slate); font-size:0.95rem; margin-bottom:1rem;">If you need legal advice but cannot afford a solicitor, there are free options available.</p>
+
+  <div class="contact-card">
+    <div class="contact-icon">🎓</div>
+    <div>
+      <h4>University Law Clinics</h4>
+      <p>Many UK universities run free legal clinics where law students — supervised by qualified solicitors — provide advice on employment and immigration matters. Clinics vary by location. To find one near you, search "<strong>university law clinic [your city]</strong>" or ask Citizens Advice for a referral.<br>
+      <a href="https://www.lawworks.org.uk/legal-advice-individuals/find-legal-advice-clinic" target="_blank">lawworks.org.uk — Find a Legal Advice Clinic</a></p>
+    </div>
+  </div>
+
+  <div class="contact-card">
+    <div class="contact-icon">🏛️</div>
+    <div>
+      <h4>LawWorks</h4>
+      <p>A charity that connects people on low incomes with free legal advice from volunteer solicitors. Covers employment law and other civil matters.<br>
+      <a href="https://www.lawworks.org.uk" target="_blank">lawworks.org.uk</a></p>
+    </div>
+  </div>
+
+  <div class="contact-card">
+    <div class="contact-icon">🆘</div>
+    <div>
+      <h4>Legal Aid</h4>
+      <p>You may be entitled to government-funded legal aid for immigration matters if you meet the financial eligibility criteria. Check eligibility and find a legal aid provider at:<br>
+      <a href="https://www.gov.uk/check-legal-aid" target="_blank">gov.uk/check-legal-aid</a></p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <strong>Migrants At Work</strong><br>
+  <a href="https://migrant-at-work.webnode.co.uk" target="_blank" style="color:var(--gold);">migrant-at-work.webnode.co.uk</a><br><br>
+  This page provides general information only and does not constitute legal advice.<br>
+  For advice specific to your situation, please contact ACAS or Citizens Advice.<br><br>
+  Employment law information correct as of April 2026.
+</footer>
+
+<script>
+  document.getElementById('g-date').value = new Date().toISOString().split('T')[0];
+
+  function getChecked(cls) {
+    return Array.from(document.querySelectorAll('.' + cls + ':checked')).map(el => el.value);
+  }
+
+  function formatDate(val) {
+    if (!val) return '___________';
+    const d = new Date(val);
+    return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+  }
+
+  function showPathway(group, choice) {
+    document.querySelectorAll('[id^="' + group + '-"]').forEach(function(el) {
+      if (el.classList.contains('pathway-result')) el.classList.remove('visible');
+    });
+    var optsEl = document.getElementById(group + '-opts');
+    if (optsEl) optsEl.style.display = 'none';
+    var result = document.getElementById(group + '-' + choice);
+    if (result) {
+      result.classList.add('visible');
+      result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  }
+
+  function resetPathway(group) {
+    document.querySelectorAll('[id^="' + group + '-"]').forEach(function(el) {
+      if (el.classList.contains('pathway-result')) el.classList.remove('visible');
+    });
+    var optsEl = document.getElementById(group + '-opts');
+    if (optsEl) optsEl.style.display = 'flex';
+  }
+
+  function generateGrievance() {
+    var name = document.getElementById('g-name').value || '[Your Name]';
+    var jobTitle = document.getElementById('g-jobtitle').value || '[Your Job Title]';
+    var dept = document.getElementById('g-dept').value || '';
+    var email = document.getElementById('g-email').value || '[Your Email]';
+    var date = formatDate(document.getElementById('g-date').value);
+    var hrname = document.getElementById('g-hrname').value || '[HR Manager Name]';
+    var company = document.getElementById('g-company').value || '[Company Name]';
+    var reasons = getChecked('g-reason');
+    var events = document.getElementById('g-events').value || '[Describe what happened, including dates, names, and what was said or done.]';
+    var outcomes = getChecked('g-outcome');
+
+    var reasonsText = reasons.length > 0
+      ? reasons.map(function(r){ return '  - ' + r.charAt(0).toUpperCase() + r.slice(1); }).join('\n')
+      : '  - [Please describe your grievance]';
+
+    var outcomesText = outcomes.length > 0
+      ? outcomes.map(function(o){ return '  - ' + o.charAt(0).toUpperCase() + o.slice(1); }).join('\n')
+      : '  - A full and impartial investigation into my complaint';
+
+    var deptLine = dept ? ', ' + dept : '';
+    var letter = name + '\n' + jobTitle + deptLine + '\n' + email + '\n\n' + date + '\n\nTo: ' + hrname + '\n' + company + '\n\nRe: Formal Grievance — ' + name + '\n\nDear ' + hrname + ',\n\nI am writing to raise a formal grievance in relation to my employment at ' + company + '. I am raising this grievance in accordance with the ACAS Code of Practice on Disciplinary and Grievance Procedures and my rights under the Employment Rights Act 1996.\n\n1. Nature of my grievance\n\nMy grievance relates to the following matters:\n' + reasonsText + '\n\n2. Account of events\n\n' + events + '\n\n3. Outcome requested\n\nI am requesting:\n' + outcomesText + '\n\n4. Next steps\n\nI ask that you acknowledge receipt of this grievance within five working days and arrange a grievance meeting as soon as reasonably practicable. I understand that I have the right to be accompanied at any grievance meeting by a colleague or trade union representative.\n\nIf this matter is not resolved internally, I reserve the right to pursue a claim before the Employment Tribunal.\n\nYours sincerely,\n\n' + name + '\n' + email;
+
+    var preview = document.getElementById('grievance-preview');
+    preview.textContent = letter;
+    preview.classList.add('visible');
+    preview.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function generateDismissal() {
+    var name = document.getElementById('d-name').value || '[Your Name]';
+    var jobTitle = document.getElementById('d-jobtitle').value || '[Your Job Title]';
+    var hrname = document.getElementById('d-hrname').value || '[HR Manager Name]';
+    var company = document.getElementById('d-company').value || '[Company Name]';
+    var startDate = formatDate(document.getElementById('d-startdate').value);
+    var endDate = formatDate(document.getElementById('d-enddate').value);
+    var givenReason = document.getElementById('d-reason').value || '[Reason stated by employer]';
+    var reasons = getChecked('d-reason');
+    var events = document.getElementById('d-events').value || '[Describe what happened, including dates, names, and what was said or done.]';
+    var impacts = getChecked('d-impact');
+    var outcomes = getChecked('d-outcome');
+
+    var reasonsText = reasons.length > 0
+      ? reasons.map(function(r){ return '  - ' + r; }).join('\n')
+      : '  - [Please specify your reasons]';
+
+    var impactsText = impacts.length > 0
+      ? impacts.map(function(i){ return '  - ' + i.charAt(0).toUpperCase() + i.slice(1); }).join('\n')
+      : '  - [Please describe the impact on you]';
+
+    var outcomesText = outcomes.length > 0
+      ? outcomes.map(function(o){ return '  - ' + o.charAt(0).toUpperCase() + o.slice(1); }).join('\n')
+      : '  - A full and impartial investigation';
+
+    var letter = name + '\n' + jobTitle + '\n\nTo: ' + hrname + '\n' + company + '\n\nRe: Formal Grievance — Unfair Dismissal — ' + name + '\n\nDear ' + hrname + ',\n\nI am writing to raise a formal grievance regarding my dismissal on ' + endDate + '. I believe that my dismissal was unfair and/or that a fair procedure was not followed. I am raising this grievance in accordance with the ACAS Code of Practice on Disciplinary and Grievance Procedures and my rights under the Employment Rights Act 1996.\n\n1. My employment details\n\n  Date employment started: ' + startDate + '\n  Date dismissed: ' + endDate + '\n  Job title: ' + jobTitle + '\n  Reason given for dismissal: ' + givenReason + '\n\n2. Why I believe my dismissal was unfair\n\n' + reasonsText + '\n\n3. Account of events\n\n' + events + '\n\n4. Impact on me\n\nThis dismissal has affected me in the following ways:\n' + impactsText + '\n\n5. Outcome requested\n\nI am requesting:\n' + outcomesText + '\n\n6. Next steps\n\nPlease acknowledge receipt of this grievance within five working days and arrange a grievance meeting as soon as possible. I understand that I have the right to be accompanied at any grievance meeting by a colleague or trade union representative.\n\nIf this matter is not resolved internally, I reserve the right to pursue a claim before the Employment Tribunal. I am aware of the strict time limits for doing so and will contact ACAS accordingly.\n\nYours sincerely,\n\n' + name;
+
+    var preview = document.getElementById('dismissal-preview');
+    preview.textContent = letter;
+    preview.classList.add('visible');
+    preview.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+
+  // ── Dropdown nav ─────────────────────────────────────────────────────────
+  (function() {
+    var items = document.querySelectorAll('.nav-item');
+    items.forEach(function(item) {
+      var link = item.querySelector(':scope > a');
+      var dropdown = item.querySelector('.nav-dropdown');
+      if (!dropdown) return;
+
+      function openDropdown() {
+        items.forEach(function(i) { i.classList.remove('open'); });
+        var rect = item.getBoundingClientRect();
+        dropdown.style.top = rect.bottom + 'px';
+        dropdown.style.left = rect.left + 'px';
+        item.classList.add('open');
+      }
+
+      link.addEventListener('click', function(e) {
+        if (!item.classList.contains('open')) {
+          e.preventDefault();
+          openDropdown();
+        }
+      });
+
+      dropdown.querySelectorAll('a').forEach(function(a) {
+        a.addEventListener('click', function() {
+          setTimeout(function() { item.classList.remove('open'); }, 80);
+        });
+      });
+    });
+
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.nav-item')) {
+        items.forEach(function(i) { i.classList.remove('open'); });
+      }
+    });
+  })();
+
+  function copyLetter(id) {
+    var el = document.getElementById(id);
+    if (!el.classList.contains('visible') || !el.textContent.trim()) {
+      alert('Please generate the letter first by clicking the Generate Letter button.');
+      return;
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(el.textContent).then(function() {
+        alert('Letter copied to clipboard! You can now paste it into an email.');
+      }).catch(function() {
+        fallbackCopy(el);
+      });
+    } else {
+      fallbackCopy(el);
+    }
+  }
+
+  function fallbackCopy(el) {
+    var range = document.createRange();
+    range.selectNode(el);
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
+    try {
+      document.execCommand('copy');
+      alert('Letter copied! You can now paste it into an email.');
+    } catch(e) {
+      alert('Please select the text above manually and copy it with Ctrl+C (or Cmd+C on a Mac).');
+    }
+    window.getSelection().removeAllRanges();
+  }
+</script>
+</body>
+</html>
