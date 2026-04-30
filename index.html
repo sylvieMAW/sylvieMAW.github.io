@@ -180,6 +180,35 @@
 
   @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
   @media print { .nav, .btn-row { display: none; } .preview-area { display: block !important; } }
+
+  /* Quiz styles */
+  .quiz-progress { display:flex; gap:5px; margin-bottom:0.75rem; }
+  .qpd { height:3px; border-radius:2px; flex:1; background:#e8e4dc; transition:background 0.2s; }
+  .qpd-active { background:#639922; }
+  .qpd-done { background:#3B6D11; }
+  .quiz-step-label { font-size:0.75rem; color:#8a8680; letter-spacing:0.06em; text-transform:uppercase; margin:0 0 0.4rem; }
+  .quiz-question { font-size:1.05rem; font-weight:700; color:var(--dark); margin:0 0 1rem; line-height:1.4; font-family:'Fraunces',serif; }
+  .quiz-options { display:flex; flex-direction:column; gap:8px; }
+  .quiz-opt { background:#fff; border:1px solid #ddd9d2; border-radius:10px; padding:0.75rem 1rem; text-align:left; cursor:pointer; font-size:0.88rem; color:var(--dark); display:flex; align-items:flex-start; gap:10px; transition:border-color 0.15s, background 0.15s; line-height:1.45; font-family:'Inter',sans-serif; }
+  .quiz-opt:hover { border-color:#aaa49c; background:#faf7f2; }
+  .qo-icon { font-size:15px; flex-shrink:0; margin-top:1px; }
+  .qo-text { display:flex; flex-direction:column; }
+  .qo-text strong { font-weight:600; margin-bottom:2px; color:var(--dark); }
+  .qo-text span { font-size:0.8rem; color:#7a7570; }
+  .quiz-back { background:none; border:none; cursor:pointer; font-size:0.82rem; color:#8a8680; padding:0; display:inline-flex; align-items:center; gap:4px; font-family:'Inter',sans-serif; }
+  .quiz-back:hover { color:#555; }
+  .quiz-result-card { border:1px solid #ddd9d2; border-radius:12px; padding:1.25rem; background:#fff; }
+  .quiz-result-tag { font-size:0.7rem; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; padding:3px 8px; border-radius:4px; display:inline-block; margin-bottom:0.75rem; }
+  .qtag-urgent { background:#FCEBEB; color:#791F1F; }
+  .qtag-rights { background:#E1F5EE; color:#085041; }
+  .qtag-process { background:#E6F1FB; color:#0C447C; }
+  .qtag-decision { background:#FAEEDA; color:#633806; }
+  .quiz-result-heading { font-size:1rem; font-weight:700; margin-bottom:0.5rem; color:var(--dark); font-family:'Fraunces',serif; line-height:1.35; }
+  .quiz-result-body { font-size:0.875rem; color:#5a5550; line-height:1.6; margin-bottom:0.85rem; }
+  .quiz-risk-box { border-left:2px solid #E24B4A; background:#FCEBEB; padding:0.75rem 1rem; margin:0.75rem 0; font-size:0.82rem; color:#501313; line-height:1.55; border-radius:0 6px 6px 0; }
+  .quiz-action-links { display:flex; flex-direction:column; gap:6px; margin-top:0.85rem; }
+  .quiz-action-link { display:flex; align-items:center; justify-content:space-between; padding:0.55rem 0.85rem; border:1px solid #e8e4dc; border-radius:8px; font-size:0.82rem; color:var(--dark); text-decoration:none; background:#faf7f2; }
+  .quiz-action-link:hover { border-color:#aaa49c; background:#fff; }
 </style>
 
 </head>
@@ -301,6 +330,55 @@
   <div class="highlight rust">
     <strong>⚠ This guide gives general information, not legal advice</strong>
     <p>Every situation is different. For advice specific to your circumstances, please contact ACAS, Citizens Advice, or a regulated immigration adviser. See the <a href="#help" style="color:var(--rust);font-weight:600;">Get Help</a> section at the bottom of this page for contact details.</p>
+  </div>
+
+  <div style="margin-top:2rem; padding-top:2rem; border-top:1px solid #e8e4dc;">
+    <h3 style="font-family:'Fraunces',serif; font-size:1.2rem; font-weight:700; margin-bottom:0.35rem;">Not sure where to start?</h3>
+    <p style="color:var(--slate); font-size:0.92rem; margin-bottom:1.25rem;">Answer 3 quick questions and we'll point you to the right section — and flag any risks you should know about before you act.</p>
+
+    <div id="quiz-wrap" style="font-family:'Inter',sans-serif;">
+
+      <div id="quiz-step-1" class="quiz-step-inner" style="display:block;">
+        <div class="quiz-progress">
+          <div class="qpd qpd-active"></div><div class="qpd"></div><div class="qpd"></div>
+        </div>
+        <p class="quiz-step-label">Step 1 of 3</p>
+        <p class="quiz-question">What best describes what's happening right now?</p>
+        <div class="quiz-options">
+          <button class="quiz-opt" onclick="quizPick(1,'pay')"><span class="qo-icon">💸</span><span class="qo-text"><strong>Problems with my pay or hours</strong><span>Underpaid, unpaid wages, hours changed, deductions</span></span></button>
+          <button class="quiz-opt" onclick="quizPick(1,'health')"><span class="qo-icon">🩹</span><span class="qo-text"><strong>Injured or unwell at work</strong><span>Accident at work, sick pay, too many hours</span></span></button>
+          <button class="quiz-opt" onclick="quizPick(1,'job')"><span class="qo-icon">📋</span><span class="qo-text"><strong>My job is ending or has ended</strong><span>Dismissed, made redundant, contract not renewed, resigned</span></span></button>
+          <button class="quiz-opt" onclick="quizPick(1,'control')"><span class="qo-icon">⚠️</span><span class="qo-text"><strong>My employer is controlling or threatening me</strong><span>Threats about visa, documents taken, fees charged, abuse</span></span></button>
+          <button class="quiz-opt" onclick="quizPick(1,'check')"><span class="qo-icon">🔍</span><span class="qo-text"><strong>I want to check a new employer before I start</strong><span>Vet a job offer, check sponsor licence, warning signs</span></span></button>
+        </div>
+      </div>
+
+      <div id="quiz-step-2" class="quiz-step-inner" style="display:none;">
+        <div class="quiz-progress">
+          <div class="qpd qpd-done"></div><div class="qpd qpd-active"></div><div class="qpd"></div>
+        </div>
+        <p class="quiz-step-label">Step 2 of 3</p>
+        <p class="quiz-question" id="qq2">Loading...</p>
+        <div class="quiz-options" id="qopts2"></div>
+        <button class="quiz-back" onclick="quizBack(1)">← Back</button>
+      </div>
+
+      <div id="quiz-step-3" class="quiz-step-inner" style="display:none;">
+        <div class="quiz-progress">
+          <div class="qpd qpd-done"></div><div class="qpd qpd-done"></div><div class="qpd qpd-active"></div>
+        </div>
+        <p class="quiz-step-label">Step 3 of 3</p>
+        <p class="quiz-question" id="qq3">Loading...</p>
+        <div class="quiz-options" id="qopts3"></div>
+        <button class="quiz-back" onclick="quizBack(2)">← Back</button>
+      </div>
+
+      <div id="quiz-result" style="display:none;">
+        <div id="quiz-result-content"></div>
+        <button class="quiz-back" style="margin-top:1rem;" onclick="quizRestart()">← Start again</button>
+      </div>
+
+    </div>
   </div>
 </div>
 
@@ -1713,5 +1791,141 @@
     window.getSelection().removeAllRanges();
   }
 </script>
+<script>
+var quizPath = {};
+
+var quizStep2Data = {
+  pay: { q: 'What is the main problem?', opts: [
+    { label: "I haven't been paid at all", sub: 'Wages completely withheld', next: 'pay-unpaid' },
+    { label: "I'm being paid less than agreed", sub: 'Underpaid, below minimum wage', next: 'pay-under' },
+    { label: 'My hours have been reduced', sub: 'Hours or salary cut', next: 'pay-hours' },
+    { label: 'Money is being deducted from my wages', sub: 'Illegal deductions, fees taken out', next: 'pay-deduct' }
+  ]},
+  health: { q: 'What is the main issue?', opts: [
+    { label: 'I was injured at work', sub: 'Accident, unsafe conditions', next: 'health-injury' },
+    { label: "I'm off sick and not getting sick pay", sub: 'SSP, employer refusing to pay', next: 'health-ssp' },
+    { label: "I'm being forced to work too many hours", sub: 'Rest breaks, overtime, exhaustion', next: 'health-hours' }
+  ]},
+  job: { q: 'What happened?', opts: [
+    { label: 'I was dismissed or fired', sub: 'With or without reason given', next: 'job-dismiss' },
+    { label: 'I want to leave and find a new sponsor', sub: 'Still employed but want to switch', next: 'job-switch' },
+    { label: 'I was made redundant', sub: 'Employer said the role no longer exists', next: 'job-redundant' },
+    { label: 'My contract ended or wasn\'t renewed', sub: 'Fixed term, end of contract', next: 'job-contract' }
+  ]},
+  control: { q: 'What is your employer doing?', opts: [
+    { label: 'Threatening to report me to immigration', sub: 'Using my visa as a threat', next: 'control-threat' },
+    { label: 'Withholding my passport or BRP', sub: 'Documents being held', next: 'control-docs' },
+    { label: 'Charging me fees or taking money', sub: 'Recruitment fees, visa costs deducted', next: 'control-fees' },
+    { label: 'Physical or psychological abuse', sub: 'Violence, threats, coercion', next: 'control-abuse' }
+  ]},
+  check: { q: 'What do you want to check?', opts: [
+    { label: 'Whether the employer is a licensed sponsor', sub: 'Check the register', next: 'check-sponsor' },
+    { label: 'The company\'s financial and legal history', sub: 'Companies House, tribunal records', next: 'check-company' },
+    { label: 'Whether a job offer looks legitimate', sub: 'Red flags, warning signs', next: 'check-legit' }
+  ]}
+};
+
+var quizStep3Data = {
+  'pay-unpaid': { q: 'How long has pay been withheld?', opts: [
+    { label: 'Less than a week', sub: '', next: 'r-pay-unpaid-recent' },
+    { label: 'Several weeks or longer', sub: '', next: 'r-pay-unpaid-long' }
+  ]},
+  'pay-hours': { q: 'Did this affect whether your salary meets your visa requirements?', opts: [
+    { label: 'Yes — or I\'m not sure', sub: '', next: 'r-hours-visa' },
+    { label: 'No — still above the threshold', sub: '', next: 'r-hours-nok' }
+  ]},
+  'pay-deduct': { q: 'What was the reason given for the deduction?', opts: [
+    { label: 'Recruitment fees or visa costs', sub: '', next: 'r-deduct-fees' },
+    { label: 'Training or DBS check', sub: '', next: 'r-deduct-training' },
+    { label: 'No reason given', sub: '', next: 'r-deduct-none' }
+  ]},
+  'job-dismiss': { q: 'Were you given a reason for your dismissal?', opts: [
+    { label: 'No reason given', sub: '', next: 'r-dismiss-noreason' },
+    { label: 'A reason was given', sub: '', next: 'r-dismiss-reason' }
+  ]},
+  'job-switch': { q: 'What is your current situation?', opts: [
+    { label: 'Still employed, want to leave safely', sub: '', next: 'r-switch-employed' },
+    { label: 'Already in my 60-day grace period', sub: '', next: 'r-switch-grace' }
+  ]},
+  'control-threat': { q: 'Has your employer actually contacted immigration, or only threatened to?', opts: [
+    { label: 'Only threatened so far', sub: '', next: 'r-threat-only' },
+    { label: 'I believe they have reported me', sub: '', next: 'r-threat-reported' }
+  ]},
+  'control-abuse': { q: 'Are you safe right now?', opts: [
+    { label: 'Yes, I am safe', sub: '', next: 'r-abuse-safe' },
+    { label: 'No — I am in immediate danger', sub: '', next: 'r-abuse-danger' }
+  ]}
+};
+
+var quizResults = {
+  'health-injury':        { tag:'qtag-urgent',   label:'Injury at work',         heading:'You have rights — your employer cannot punish you for reporting this', body:'Report the injury in writing immediately and keep a copy. Your employer must record it. You cannot be dismissed for raising a health and safety concern — this is whistleblower protection.', risk:null, links:[{t:'Go to: Injury at work section',h:'#injury'},{t:'Go to: Raise a grievance (if penalised)',h:'#grievance'}] },
+  'health-ssp':           { tag:'qtag-rights',   label:'Sick pay & SSP',          heading:'SSP is a legal right regardless of your visa or earnings', body:'Statutory Sick Pay applies to all eligible employees — your immigration status or "no recourse to public funds" condition does not affect this. If your employer is refusing to pay, you can challenge this formally.', risk:null, links:[{t:'Go to: Sick pay & SSP section',h:'#ssp'},{t:'Go to: Raise a grievance',h:'#grievance'}] },
+  'health-hours':         { tag:'qtag-rights',   label:'Working hours',           heading:'The law limits working hours — even for sponsored workers', body:'You are entitled to rest breaks and limits on weekly hours under the Working Time Regulations. Excessive hours may also affect your visa if your effective hourly rate drops below the minimum.', risk:null, links:[{t:'Go to: Long hours & rest breaks',h:'#hours'},{t:'Go to: Hours, pay & your visa',h:'#hoursvisa'}] },
+  'pay-under':            { tag:'qtag-rights',   label:'Underpayment',            heading:'Being paid below your visa threshold can put your sponsorship at risk', body:'Underpayment is both an employment law issue and a visa issue. Your sponsor must pay you the salary on your Certificate of Sponsorship. Act quickly — the longer this continues, the greater the risk.', risk:null, links:[{t:'Go to: Wrong pay & unpaid wages',h:'#wrongpay'},{t:'Go to: Hours, pay & your visa',h:'#hoursvisa'}] },
+  'check-sponsor':        { tag:'qtag-process',  label:'Vet an employer',         heading:'Check the sponsor register before accepting any offer', body:'An employer must appear on the official Sponsor Register to legally employ you on a Skilled Worker visa. This takes two minutes to check.', risk:null, links:[{t:'Go to: Vet an Employer section',h:'#vet'}] },
+  'check-company':        { tag:'qtag-process',  label:'Company checks',          heading:'Check financial history, legal records and reviews', body:'Companies House, Employment Tribunal records, and review sites can all reveal warning signs before you commit to a role.', risk:null, links:[{t:'Go to: Vet an Employer section',h:'#vet'}] },
+  'check-legit':          { tag:'qtag-process',  label:'Warning signs',           heading:'There are clear red flags that suggest a job is not legitimate', body:'Asking you to pay for your Certificate of Sponsorship, vague job descriptions, or pressure to start immediately are all serious warning signs.', risk:null, links:[{t:'Go to: Vet an Employer section',h:'#vet'},{t:'Go to: Employer Rules',h:'#employer-rules'}] },
+  'r-pay-unpaid-recent':  { tag:'qtag-urgent',   label:'Unpaid wages',            heading:'Write to your employer now — in writing', body:'Send an email today referencing the amount owed and the pay date missed. Keep a copy. This creates a paper trail. If not resolved, you can escalate to the Fair Work Agency.', risk:null, links:[{t:'Go to: Wrong pay & unpaid wages',h:'#wrongpay'},{t:'Go to: Raise a grievance',h:'#grievance'}] },
+  'r-pay-unpaid-long':    { tag:'qtag-urgent',   label:'Unpaid wages — urgent',   heading:'This is serious — get advice before taking action', body:'Long-term wage theft is a significant violation. You may have grounds for an Employment Tribunal claim. Given your visa situation, it is important to get specialist advice before making any reports.', risk:'Before contacting the Fair Work Agency, speak to Migrants At Work or the Work Rights Centre — they can help you report safely without risking your sponsorship.', links:[{t:'Go to: Wrong pay & unpaid wages',h:'#wrongpay'},{t:'Go to: Fair Work Agency — read the warning',h:'#fwa'},{t:'Go to: Get help',h:'#help'}] },
+  'r-hours-visa':         { tag:'qtag-urgent',   label:'Hours & visa risk',       heading:'A salary drop below your visa threshold puts your sponsorship at risk', body:'Your sponsor is legally required to pay you the salary listed on your CoS. If hours or pay have dropped below that threshold, they may be in breach of their sponsorship duties — and you may need to act quickly.', risk:'Do not resign without advice. Get specialist support before contacting UKVI or any enforcement body.', links:[{t:'Go to: Hours, pay & your visa',h:'#hoursvisa'},{t:'Go to: Get help',h:'#help'}] },
+  'r-hours-nok':          { tag:'qtag-rights',   label:'Hours changed',           heading:'Your employer can reduce hours — but within limits', body:'If your salary remains above your visa threshold, a reduction in hours is primarily an employment law issue. You can raise a formal grievance if your contract has been breached.', risk:null, links:[{t:'Go to: Hours, pay & your visa',h:'#hoursvisa'},{t:'Go to: Raise a grievance',h:'#grievance'}] },
+  'r-deduct-fees':        { tag:'qtag-urgent',   label:'Illegal deduction',       heading:'This is illegal — employers cannot charge you recruitment fees', body:'Charging workers for their Certificate of Sponsorship or recruitment is a criminal offence. You have strong grounds to challenge this and should get advice urgently.', risk:'Get specialist advice before reporting. Migrants At Work and the Work Rights Centre can support you through this safely.', links:[{t:'Go to: Employer Rules',h:'#employer-rules'},{t:'Go to: Get help',h:'#help'}] },
+  'r-deduct-training':    { tag:'qtag-rights',   label:'Deductions — training',   heading:'Deducting pay for mandatory training or DBS checks is not allowed', body:'If the training or DBS check was a requirement of the job, your employer cannot deduct the cost from your wages. You can challenge this formally.', risk:null, links:[{t:'Go to: Employer Rules',h:'#employer-rules'},{t:'Go to: Raise a grievance',h:'#grievance'}] },
+  'r-deduct-none':        { tag:'qtag-rights',   label:'Unexplained deduction',   heading:'Any deduction from wages must be agreed in writing in advance', body:'If no reason was given and it was not in your contract, this is likely an unlawful deduction. You can raise a formal grievance and escalate to the Fair Work Agency.', risk:null, links:[{t:'Go to: Wrong pay & unpaid wages',h:'#wrongpay'},{t:'Go to: Raise a grievance',h:'#grievance'}] },
+  'r-dismiss-noreason':   { tag:'qtag-urgent',   label:'Unfair dismissal',        heading:'Being dismissed without a reason given is likely unfair dismissal', body:'If you have been employed for more than 2 years, you have the right to a written reason for dismissal. You may have grounds for an Employment Tribunal claim — but strict time limits apply.', risk:'Time limit: you must contact ACAS within 3 months minus 1 day of dismissal. Do not delay.', links:[{t:'Go to: Job ending — unfair dismissal',h:'#ending-unfair-dismissal'},{t:'Go to: Unfair dismissal letter',h:'#dismissal'},{t:'Go to: Get help',h:'#help'}] },
+  'r-dismiss-reason':     { tag:'qtag-decision', label:'Dismissal with reason',   heading:'Even with a reason, your dismissal may still be unfair', body:'A reason alone is not enough — the process must also have been fair. Were you warned? Were you given a chance to respond? Was there a proper investigation?', risk:null, links:[{t:'Go to: Job ending — unfair dismissal',h:'#ending-unfair-dismissal'},{t:'Go to: Unfair dismissal letter',h:'#dismissal'}] },
+  'r-switch-employed':    { tag:'qtag-process',  label:'Switching sponsor',       heading:'You can leave your employer and switch sponsor while still employed', body:'You do not need to resign before finding a new sponsor. In fact, it is safer to secure a new CoS before handing in your notice. Your current employer cannot stop you from looking for other jobs.', risk:null, links:[{t:'Go to: Switch sponsor',h:'#switching'},{t:'Go to: Job ending',h:'#ending'}] },
+  'r-switch-grace':       { tag:'qtag-urgent',   label:'60-day grace period',     heading:'You have 60 days from your last day of employment', body:'The 60-day grace period starts from when your employment ends. During this time you can look for a new sponsor, but you cannot work. Act quickly — do not let this expire without a plan.', risk:null, links:[{t:'Go to: Your 60-day grace period',h:'#ending'},{t:'Go to: Switch sponsor',h:'#switching'}] },
+  'r-threat-only':        { tag:'qtag-decision', label:'Immigration threat',      heading:'Using your visa status to intimidate you is illegal', body:'Threatening you with immigration enforcement to control you is a form of modern slavery. You have whistleblower protections if you report them. However, it is important to understand all your options before you act.', risk:'Reporting to the police or NRM may result in your right to work being paused while your case is assessed. Get specialist advice first — this does not mean you should not report, but you should do so with full information.', links:[{t:'Go to: Reporting & visa section',h:'#reporting'},{t:'Go to: Get help',h:'#help'}] },
+  'r-threat-reported':    { tag:'qtag-urgent',   label:'Reported to immigration', heading:'Get advice immediately', body:'If your employer has already reported you, you should seek specialist immigration and employment advice as a priority. Do not wait.', risk:null, links:[{t:'Go to: Get help — urgent contacts',h:'#help'},{t:'Go to: Reporting & visa section',h:'#reporting'}] },
+  'control-docs':         { tag:'qtag-urgent',   label:'Documents withheld',      heading:'Withholding your passport or BRP is illegal', body:'Your employer has no right to hold your documents. This is a form of modern slavery and a criminal offence. You should report this — but understand your options fully first.', risk:'Reporting to police triggers the NRM referral process which may suspend your right to work temporarily. Speak to a specialist first.', links:[{t:'Go to: Employer Rules',h:'#employer-rules'},{t:'Go to: Get help',h:'#help'}] },
+  'control-fees':         { tag:'qtag-urgent',   label:'Illegal fees',            heading:'Charging workers recruitment fees is a criminal offence', body:'You should not have to pay anything for your job or visa. This is labour exploitation and potentially modern slavery.', risk:'Get advice before reporting. Migrants At Work or the Work Rights Centre can help you report safely.', links:[{t:'Go to: Employer Rules',h:'#employer-rules'},{t:'Go to: Get help',h:'#help'}] },
+  'r-abuse-danger':       { tag:'qtag-urgent',   label:'Immediate danger',        heading:'Call 999 if you are in immediate danger', body:'Your safety is the priority. Call 999. The police are obliged to protect you regardless of your immigration status. Reporting does not automatically mean deportation.', risk:null, links:[{t:'Go to: Get help — emergency contacts',h:'#help'}] },
+  'r-abuse-safe':         { tag:'qtag-urgent',   label:'Abuse at work',           heading:'What is happening to you may amount to modern slavery', body:'Physical or psychological abuse by an employer is illegal. You may be entitled to protection under the Modern Slavery Act. Getting specialist advice is essential before you decide what to do next.', risk:'Referral to the NRM (National Referral Mechanism) can provide protection — but it also pauses your right to work while the case is assessed. Speak to a specialist who can help you weigh the options.', links:[{t:'Go to: Reporting & visa section',h:'#reporting'},{t:'Go to: Get help',h:'#help'}] },
+  'job-redundant':        { tag:'qtag-process',  label:'Redundancy',              heading:'Redundancy still triggers the 60-day grace period', body:'Even if your redundancy was genuine, your sponsorship ends with your job. You have 60 days to find a new sponsor. You may also be entitled to redundancy pay depending on your length of service.', risk:null, links:[{t:'Go to: Job ending',h:'#ending'},{t:'Go to: Switch sponsor',h:'#switching'}] },
+  'job-contract':         { tag:'qtag-process',  label:'Contract ended',          heading:'A contract ending is treated the same as any other job ending for visa purposes', body:'Your 60-day grace period begins from the end of your contract. Start looking for a new sponsor straight away, and check whether your employer should have renewed your contract.', risk:null, links:[{t:'Go to: Job ending',h:'#ending'},{t:'Go to: Switch sponsor',h:'#switching'}] }
+};
+
+function quizShowOnly(id) {
+  ['quiz-step-1','quiz-step-2','quiz-step-3','quiz-result'].forEach(function(s){ document.getElementById(s).style.display='none'; });
+  document.getElementById(id).style.display='block';
+}
+
+function quizPick(step, val) {
+  if (step === 1) {
+    quizPath.s1 = val;
+    var d = quizStep2Data[val];
+    document.getElementById('qq2').textContent = d.q;
+    document.getElementById('qopts2').innerHTML = d.opts.map(function(o){
+      return '<button class="quiz-opt" onclick="quizPick(2,\''+o.next+'\')"><span class="qo-text"><strong>'+o.label+'</strong>'+(o.sub?'<span>'+o.sub+'</span>':'')+'</span></button>';
+    }).join('');
+    quizShowOnly('quiz-step-2');
+  } else if (step === 2) {
+    quizPath.s2 = val;
+    var d3 = quizStep3Data[val];
+    if (!d3) { quizShowResult(val); return; }
+    document.getElementById('qq3').textContent = d3.q;
+    document.getElementById('qopts3').innerHTML = d3.opts.map(function(o){
+      return '<button class="quiz-opt" onclick="quizPick(3,\''+o.next+'\')"><span class="qo-text"><strong>'+o.label+'</strong>'+(o.sub?'<span>'+o.sub+'</span>':'')+'</span></button>';
+    }).join('');
+    quizShowOnly('quiz-step-3');
+  } else {
+    quizShowResult(val);
+  }
+}
+
+function quizShowResult(key) {
+  var r = quizResults[key];
+  if (!r) { document.getElementById('quiz-result-content').innerHTML='<p style="color:#7a7570;font-size:0.9rem;">We could not find a specific match. Please browse the sections below or <a href="#help">contact us for advice</a>.</p>'; quizShowOnly('quiz-result'); return; }
+  var html = '<div class="quiz-result-card"><span class="quiz-result-tag '+r.tag+'">'+r.label+'</span><p class="quiz-result-heading">'+r.heading+'</p><p class="quiz-result-body">'+r.body+'</p>';
+  if (r.risk) html += '<div class="quiz-risk-box"><strong style="display:block;margin-bottom:4px;">Important — read before you act</strong>'+r.risk+'</div>';
+  if (r.links && r.links.length) html += '<div class="quiz-action-links">'+r.links.map(function(l){ return '<a class="quiz-action-link" href="'+l.h+'">'+l.t+' <span style="color:#aaa;">→</span></a>'; }).join('')+'</div>';
+  html += '</div>';
+  document.getElementById('quiz-result-content').innerHTML = html;
+  quizShowOnly('quiz-result');
+}
+
+function quizBack(toStep) { quizShowOnly('quiz-step-'+toStep); }
+function quizRestart() { quizPath={}; quizShowOnly('quiz-step-1'); }
+</script>
 </body>
-</html>
