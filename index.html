@@ -95,10 +95,11 @@
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
   @media (max-width: 480px) { .form-row { grid-template-columns: 1fr; } }
   .checkbox-group { display: flex; flex-direction: column; gap: 0.5rem; }
-  .checkbox-item { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.6rem 0.75rem; background: white; border: 1.5px solid #d8d4cc; border-radius: 8px; cursor: pointer; transition: border-color 0.2s, background 0.2s; }
+  .checkbox-item { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.6rem 0.75rem; background: white; border: 1.5px solid #d8d4cc; border-radius: 8px; cursor: pointer; transition: border-color 0.2s, background 0.2s; user-select: none; }
   .checkbox-item:hover { border-color: var(--rust); background: var(--light-rust); }
-  .checkbox-item input[type="checkbox"] { width: auto; margin-top: 2px; flex-shrink: 0; accent-color: var(--rust); }
-  .checkbox-item span { font-size: 0.9rem; color: var(--slate); }
+  .checkbox-item:has(input:checked) { border-color: var(--rust); background: var(--light-rust); }
+  .checkbox-item input[type="checkbox"] { width: 16px; height: 16px; min-width: 16px; margin-top: 2px; flex-shrink: 0; accent-color: var(--rust); cursor: pointer; }
+  .checkbox-item span { font-size: 0.9rem; color: var(--slate); pointer-events: none; }
   .preview-area { background: #f9f6f1; border: 1px solid #d8d4cc; border-radius: 10px; padding: 1.5rem; margin-top: 1.5rem; font-size: 0.88rem; line-height: 1.8; color: var(--dark); white-space: pre-wrap; font-family: 'DM Sans', sans-serif; display: none; }
   .preview-area.visible { display: block; }
   .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1.5rem; border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 0.92rem; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
@@ -557,7 +558,7 @@
       <ol class="pathway-steps">
         <li>Recruitment fees charged to workers are banned under the Employment Agencies Act and the Modern Slavery Act. Repayment clauses in your contract are also prohibited — they may be unenforceable.</li>
         <li>Keep records of any deductions — payslips, bank statements, messages, your original contract.</li>
-        <li>Report to the Fair Work Agency helpline: <strong>0800 917 2368</strong> (free).</li>
+        <li>Report to the Fair Work Agency helpline: <strong>0345 161 6000</strong>.</li>
         <li>You may be able to claim the deducted money back through an Employment Tribunal.</li>
         <li>For the full rules, see <a href="https://assets.publishing.service.gov.uk/media/69aaaf82c78869bf8eb8a46f/Sponsor-guidance-Part-3-compliance-03-26-v1.0.pdf" target="_blank" style="color:var(--rust);">Home Office Sponsor Guidance Part 3 (PDF) ↗</a>, Annex C2(cc) and C2(dd).</li>
       </ol>
@@ -820,7 +821,7 @@
 
   <div class="highlight rust">
     <strong>⚠ What to do if you are being underpaid</strong>
-    <p>First, raise the issue with your employer in writing and keep a copy. If they do not correct it, you can report to the <strong>Fair Work Agency: 0800 917 2368</strong> (free) — they can investigate and recover unpaid wages on your behalf. You can also bring a claim to the Employment Tribunal. See the <a href="#help" style="color:var(--rust);font-weight:600;">Get Help</a> section for more.</p>
+    <p>First, raise the issue with your employer in writing and keep a copy. If they do not correct it, you can report to the <strong>Fair Work Agency: 0345 161 6000</strong> — they can investigate and recover unpaid wages on your behalf. You can also bring a claim to the Employment Tribunal. See the <a href="#help" style="color:var(--rust);font-weight:600;">Get Help</a> section for more.</p>
   </div>
 
   <div class="highlight sage">
@@ -1478,7 +1479,7 @@
       <ol class="pathway-steps">
         <li>First, raise a formal grievance with your employer in writing (see the Grievance Letter section above).</li>
         <li>If unresolved, contact ACAS for Early Conciliation — free and confidential: <strong>0300 123 1100</strong>.</li>
-        <li>Report to the Fair Work Agency: <strong>0800 917 2368</strong> (free) or <a href="https://www.gov.uk/pay-and-work-rights" target="_blank" style="color:var(--rust);">gov.uk/pay-and-work-rights</a></li>
+        <li>Report to the Fair Work Agency: <strong>0345 161 6000</strong> or <a href="https://www.gov.uk/government/organisations/fair-work-agency" target="_blank" style="color:var(--rust);">gov.uk/government/organisations/fair-work-agency</a></li>
         <li>You can bring a claim to the Employment Tribunal — you do not need a lawyer.</li>
       </ol>
       <button class="pathway-back" onclick="resetPathway('reporting')">← Back to options</button>
@@ -1546,8 +1547,8 @@
 
   <div class="highlight gold">
     <strong>📞 How to contact the Fair Work Agency</strong>
-    <p>Reports can be made online or by phone. You can report anonymously. This is a civil enforcement process — it does not trigger immigration enforcement.</p>
-    <p style="margin-top:0.5rem;"><a href="https://www.gov.uk/pay-and-work-rights" target="_blank" style="color:#a07c2a;font-weight:600;">gov.uk/pay-and-work-rights</a> · Helpline: <strong>0800 917 2368</strong> (free)</p>
+    <p>Reports can be made online or by phone. You can report anonymously.</p>
+    <p style="margin-top:0.5rem;"><a href="https://www.gov.uk/government/organisations/fair-work-agency" target="_blank" style="color:#a07c2a;font-weight:600;">gov.uk/government/organisations/fair-work-agency</a> · Helpline: <strong>0345 161 6000</strong></p>
   </div>
 
   <div class="card">
@@ -1555,7 +1556,6 @@
     <ul>
       <li><strong>ACAS</strong> advises and mediates — it helps resolve disputes but cannot force employers to pay</li>
       <li><strong>The Fair Work Agency</strong> is an enforcement body — it can investigate employers, issue fines, and compel payment of owed wages</li>
-      <li>Both can be contacted without affecting your immigration status</li>
       <li>For individual disputes, ACAS is usually the first step. For systematic underpayment or illegal deductions, the FWA can be more effective</li>
     </ul>
   </div>
@@ -1648,212 +1648,6 @@
 
 
 
-<!-- GET HELP -->
-<div class="section" id="help">
-  <div class="section-tag tag-slate">Get Help</div>
-  <h2>Where to get help</h2>
-  <p>You do not have to deal with this alone. These organisations offer free, confidential advice. Contacting them will not affect your immigration status.</p>
-
-  <div class="contact-card">
-    <div class="contact-icon">📞</div>
-    <div>
-      <h4>ACAS (Advisory, Conciliation and Arbitration Service)</h4>
-      <p>Free, impartial advice on employment rights, disputes, and how to make a tribunal claim. The first step before any Employment Tribunal claim.<br>
-      <a href="tel:03001231100">0300 123 1100</a> · Mon–Fri 8am–6pm · <a href="https://www.acas.org.uk" target="_blank">acas.org.uk</a></p>
-    </div>
-  </div>
-
-  <div class="contact-card">
-    <div class="contact-icon">💬</div>
-    <div>
-      <h4>Citizens Advice</h4>
-      <p>Free confidential advice on employment, benefits, housing and more. Available online, by phone, or in person at local offices.<br>
-      <a href="https://www.citizensadvice.org.uk" target="_blank">citizensadvice.org.uk</a></p>
-    </div>
-  </div>
-
-  <div class="contact-card">
-    <div class="contact-icon">⚖️</div>
-    <div>
-      <h4>Employment Tribunal</h4>
-      <p>If internal processes fail, you can make a claim to an Employment Tribunal. You must contact ACAS first. Strict time limits apply — do not delay.<br>
-      <a href="https://www.gov.uk/employment-tribunals" target="_blank">gov.uk/employment-tribunals</a></p>
-    </div>
-  </div>
-
-  <div class="contact-card">
-    <div class="contact-icon">🔍</div>
-    <div>
-      <h4>Fair Work Agency (FWA)</h4>
-      <p>Enforces workers' rights including minimum wage, holiday pay, and illegal recruitment fees. Can investigate employers and recover wages on your behalf. Reports underpayment, unpaid holiday pay, and illegal recruitment fees.<br>
-      <a href="tel:08009172368">0800 917 2368</a> (free) · Phone: <a href="tel:03451616000">0345 161 6000</a> · Email: <a href="mailto:contact@fairworkagency.gov.uk">contact@fairworkagency.gov.uk</a> · <a href="https://www.gov.uk/pay-and-work-rights" target="_blank">gov.uk/pay-and-work-rights</a></p>
-    </div>
-  </div>
-
-  <div class="contact-card">
-    <div class="contact-icon">🌍</div>
-    <div>
-      <h4>Migrant Help</h4>
-      <p>Free, confidential support for migrant workers including referral to the NRM and immigration legal advice.<br>
-      <a href="tel:08088010503">0808 8010 503</a> (free, 24 hours) · <a href="https://www.migranthelpuk.org" target="_blank">migranthelpuk.org</a></p>
-    </div>
-  </div>
-
-  <div class="contact-card">
-    <div class="contact-icon">🤝</div>
-    <div>
-      <h4>Your trade union</h4>
-      <p>If you are a union member, contact your union rep immediately. They can accompany you to meetings, provide legal support, and negotiate on your behalf. If you are not a member, consider joining — membership is often low cost.</p>
-    </div>
-  </div>
-
-  <div class="contact-card">
-    <div class="contact-icon">🧭</div>
-    <div>
-      <h4>Find a regulated immigration adviser</h4>
-      <p>Only use OISC-registered advisers or regulated solicitors for immigration advice. Do not use unregulated advisers.<br>
-      <a href="https://www.gov.uk/find-an-immigration-adviser" target="_blank">gov.uk/find-an-immigration-adviser</a> · <a href="https://www.oisc.gov.uk/consumers/find-an-adviser/" target="_blank">OISC adviser search</a></p>
-    </div>
-  </div>
-
-  <div class="highlight sage" style="margin-top:1.5rem;">
-    <strong>🔒 All of these services are confidential</strong>
-    <p>Contacting ACAS, Citizens Advice, or the Fair Work Agency does not automatically involve your employer, the government, or immigration authorities. If you are concerned about confidentiality in your specific situation, ask the adviser directly before sharing personal details.</p>
-  </div>
-
-  <h3 style="font-family:'Fraunces',serif; font-size:1.2rem; font-weight:700; margin:2rem 0 0.75rem;">Charities that can support you</h3>
-  <p style="color:var(--slate); font-size:0.95rem; margin-bottom:1rem;">These organisations specialise in supporting migrant workers and can provide advice, advocacy, and practical help.</p>
-
-  <div class="contact-card">
-    <div class="contact-icon">🌐</div>
-    <div>
-      <h4>Migrant Rights Network</h4>
-      <p>Policy and advocacy organisation working to advance the rights of migrants in the UK. Publishes guides and resources on migrant workers' rights.<br>
-      <a href="https://www.migrantsrights.org.uk" target="_blank">migrantsrights.org.uk</a></p>
-    </div>
-  </div>
-
-  <div class="contact-card">
-    <div class="contact-icon">⚖️</div>
-    <div>
-      <h4>Work Rights Centre</h4>
-      <p>Provides free employment and immigration advice to migrants and EU citizens. Particularly experienced with care workers and sponsored workers.<br>
-      <a href="https://www.workrightscentre.org" target="_blank">workrightscentre.org</a></p>
-    </div>
-  </div>
-
-  <div class="contact-card">
-    <div class="contact-icon">🏴󠁧󠁢󠁳󠁣󠁴󠁿</div>
-    <div>
-      <h4>Workers Support Centre (Scotland)</h4>
-      <p>Based in Scotland, provides free advice and support to migrant workers on employment rights, exploitation, and access to services.<br>
-      <a href="https://www.workerssupportcentre.org" target="_blank">workerssupportcentre.org</a></p>
-    </div>
-  </div>
-
-  <div class="contact-card">
-    <div class="contact-icon">✊</div>
-    <div>
-      <h4>Migrants At Work</h4>
-      <p>Created this guide. We support migrant workers — particularly those on sponsored visas — through advice, resources, and community support.<br>
-      <a href="mailto:info@migrantsatwork.org">info@migrantsatwork.org</a></p>
-    </div>
-  </div>
-
-  <h3 style="font-family:'Fraunces',serif; font-size:1.2rem; font-weight:700; margin:2rem 0 0.75rem;" id="foodbank">Food help &amp; emergency support</h3>
-  <p style="color:var(--slate); font-size:0.95rem; margin-bottom:1rem;">If you are struggling to afford food, you are not alone — and there is support available. Food banks are open to working people regardless of immigration status. They are charitable services, not connected to the Home Office or UKVI.</p>
-
-  <div class="contact-card">
-    <div class="contact-icon">🍞</div>
-    <div>
-      <h4>Trussell Trust Food Banks</h4>
-      <p>A network of over 1,300 food bank centres across the UK. You usually need a referral voucher from a GP, social worker, school, or Citizens Advice. Some accept self-referrals — call ahead to check.<br>
-      <a href="https://www.trusselltrust.org/get-help/find-a-foodbank/" target="_blank">trusselltrust.org — Find a food bank near you</a></p>
-    </div>
-  </div>
-
-  <div class="contact-card">
-    <div class="contact-icon">🥡</div>
-    <div>
-      <h4>Community fridges, larders &amp; independent food banks</h4>
-      <p>Many local communities run free food sharing without needing a referral. Find a community fridge near you at <a href="https://communityfridgemap.co.uk" target="_blank">communityfridgemap.co.uk</a>. For independent food banks, search "[your town] food bank" or ask at your local library or community centre.</p>
-    </div>
-  </div>
-
-  <div class="contact-card">
-    <div class="contact-icon">🏛️</div>
-    <div>
-      <h4>Local council Household Support Fund</h4>
-      <p>Many councils can provide emergency food vouchers or supermarket credit through the Household Support Fund. Contact your local council's welfare or benefits team directly, or ask Citizens Advice to refer you.</p>
-    </div>
-  </div>
-
-  <div class="contact-card">
-    <div class="contact-icon">⛪</div>
-    <div>
-      <h4>Faith groups &amp; community meals</h4>
-      <p>Many churches, mosques, gurdwaras, and temples run free meals, community cafes, or food support open to everyone regardless of faith. Ask locally or search "[your area] community meal".</p>
-    </div>
-  </div>
-
-  <div class="highlight gold" style="margin-top:1rem;">
-    <strong>📞 In immediate financial crisis?</strong>
-    <p>Call Citizens Advice on <strong>0800 144 8848</strong> (freephone, Monday to Friday) or visit <a href="https://www.citizensadvice.org.uk" target="_blank" style="color:#a07c2a;font-weight:600;">citizensadvice.org.uk</a> — they can refer you to food banks, emergency grants, and other support.</p>
-  </div>
-
-  <h3 style="font-family:'Fraunces',serif; font-size:1.2rem; font-weight:700; margin:2rem 0 0.75rem;">Free legal advice</h3>
-  <p style="color:var(--slate); font-size:0.95rem; margin-bottom:1rem;">You do not need to pay for a solicitor to get legal help. There are several free options available for employment, immigration, and other civil matters.</p>
-
-  <div class="contact-card">
-    <div class="contact-icon">🎓</div>
-    <div>
-      <h4>University Law Clinics</h4>
-      <p>Many UK universities run free legal clinics where law students — supervised by qualified solicitors — provide advice on employment and immigration matters. To find one near you, search "<strong>university law clinic [your city]</strong>" or ask Citizens Advice for a referral.<br>
-      <a href="https://www.lawworks.org.uk/legal-advice-individuals/find-legal-advice-clinic" target="_blank">lawworks.org.uk — Find a Legal Advice Clinic</a></p>
-    </div>
-  </div>
-
-  <div class="contact-card">
-    <div class="contact-icon">🏛️</div>
-    <div>
-      <h4>LawWorks</h4>
-      <p>A charity that connects people on low incomes with free legal advice from volunteer solicitors. Covers employment law and other civil matters.<br>
-      <a href="https://www.lawworks.org.uk" target="_blank">lawworks.org.uk</a></p>
-    </div>
-  </div>
-
-  <div class="contact-card">
-    <div class="contact-icon">⚖️</div>
-    <div>
-      <h4>Law Centres</h4>
-      <p>Law centres provide free legal advice to local communities on housing, employment, immigration, and welfare. They specialise in supporting people who cannot afford a solicitor.<br>
-      <a href="https://www.lawcentres.org.uk" target="_blank">lawcentres.org.uk — Find your nearest law centre</a></p>
-    </div>
-  </div>
-
-  <div class="contact-card">
-    <div class="contact-icon">🆘</div>
-    <div>
-      <h4>Legal Aid</h4>
-      <p>You may be entitled to government-funded legal aid for immigration, asylum, and some employment matters if you meet the financial eligibility criteria. Check eligibility and find a legal aid provider at:<br>
-      <a href="https://www.gov.uk/check-legal-aid" target="_blank">gov.uk/check-legal-aid</a></p>
-    </div>
-  </div>
-
-  <div class="contact-card">
-    <div class="contact-icon">🧒</div>
-    <div>
-      <h4>Coram Children's Legal Centre</h4>
-      <p>Free immigration and education law advice for children and young people and their families.<br>
-      <a href="https://www.childrenslegalcentre.com" target="_blank">childrenslegalcentre.com</a></p>
-    </div>
-  </div>
-
-  <div class="highlight rust" style="margin-top:1rem;">
-    <strong>⚠ Only use regulated immigration advisers</strong>
-    <p>Immigration advice can only legally be given by solicitors or advisers registered with the OISC. Never pay someone who is not registered — they are operating illegally and can seriously damage your case. Find a regulated adviser at <a href="https://www.gov.uk/find-an-immigration-adviser" target="_blank" style="color:var(--rust);font-weight:600;">gov.uk/find-an-immigration-adviser</a> or report an unregistered adviser at <a href="https://www.gov.uk/report-immigration-adviser" target="_blank" style="color:var(--rust);font-weight:600;">gov.uk/report-immigration-adviser</a>.</p>
-  </div>
-</div>
 
 <!-- UK TAX SYSTEM -->
 <div class="section" id="tax">
@@ -2100,6 +1894,215 @@
     </div>
   </div>
 </div>
+
+
+<!-- GET HELP -->
+<div class="section" id="help">
+  <div class="section-tag tag-slate">Get Help</div>
+  <h2>Where to get help</h2>
+  <p>You do not have to deal with this alone. These organisations offer free, confidential advice. Contacting them will not affect your immigration status.</p>
+
+  <div class="contact-card">
+    <div class="contact-icon">📞</div>
+    <div>
+      <h4>ACAS (Advisory, Conciliation and Arbitration Service)</h4>
+      <p>Free, impartial advice on employment rights, disputes, and how to make a tribunal claim. The first step before any Employment Tribunal claim.<br>
+      <a href="tel:03001231100">0300 123 1100</a> · Mon–Fri 8am–6pm · <a href="https://www.acas.org.uk" target="_blank">acas.org.uk</a></p>
+    </div>
+  </div>
+
+  <div class="contact-card">
+    <div class="contact-icon">💬</div>
+    <div>
+      <h4>Citizens Advice</h4>
+      <p>Free confidential advice on employment, benefits, housing and more. Available online, by phone, or in person at local offices.<br>
+      <a href="https://www.citizensadvice.org.uk" target="_blank">citizensadvice.org.uk</a></p>
+    </div>
+  </div>
+
+  <div class="contact-card">
+    <div class="contact-icon">⚖️</div>
+    <div>
+      <h4>Employment Tribunal</h4>
+      <p>If internal processes fail, you can make a claim to an Employment Tribunal. You must contact ACAS first. Strict time limits apply — do not delay.<br>
+      <a href="https://www.gov.uk/employment-tribunals" target="_blank">gov.uk/employment-tribunals</a></p>
+    </div>
+  </div>
+
+  <div class="contact-card">
+    <div class="contact-icon">🔍</div>
+    <div>
+      <h4>Fair Work Agency (FWA)</h4>
+      <p>Enforces workers' rights including minimum wage, holiday pay, and illegal recruitment fees. Can investigate employers and recover wages on your behalf. Reports underpayment, unpaid holiday pay, and illegal recruitment fees.<br>
+      Phone: <a href="tel:03451616000">0345 161 6000</a> · Email: <a href="mailto:contact@fairworkagency.gov.uk">contact@fairworkagency.gov.uk</a> · <a href="https://www.gov.uk/government/organisations/fair-work-agency" target="_blank">gov.uk/government/organisations/fair-work-agency</a></p>
+    </div>
+  </div>
+
+  <div class="contact-card">
+    <div class="contact-icon">🌍</div>
+    <div>
+      <h4>Migrant Help</h4>
+      <p>Free, confidential support for migrant workers including referral to the NRM and immigration legal advice.<br>
+      <a href="tel:08088010503">0808 8010 503</a> (free, 24 hours) · <a href="https://www.migranthelpuk.org" target="_blank">migranthelpuk.org</a></p>
+    </div>
+  </div>
+
+  <div class="contact-card">
+    <div class="contact-icon">🤝</div>
+    <div>
+      <h4>Your trade union</h4>
+      <p>If you are a union member, contact your union rep immediately. They can accompany you to meetings, provide legal support, and negotiate on your behalf. If you are not a member, consider joining — membership is often low cost.</p>
+    </div>
+  </div>
+
+  <div class="contact-card">
+    <div class="contact-icon">🧭</div>
+    <div>
+      <h4>Find a regulated immigration adviser</h4>
+      <p>Only use OISC-registered advisers or regulated solicitors for immigration advice. Do not use unregulated advisers.<br>
+      <a href="https://www.gov.uk/find-an-immigration-adviser" target="_blank">gov.uk/find-an-immigration-adviser</a> · <a href="https://www.oisc.gov.uk/consumers/find-an-adviser/" target="_blank">OISC adviser search</a></p>
+    </div>
+  </div>
+
+  <div class="highlight sage" style="margin-top:1.5rem;">
+    <strong>🔒 All of these services are confidential</strong>
+    <p>Contacting ACAS, Citizens Advice, or the Fair Work Agency does not automatically involve your employer, the government, or immigration authorities. If you are concerned about confidentiality in your specific situation, ask the adviser directly before sharing personal details.</p>
+  </div>
+
+  <h3 style="font-family:'Fraunces',serif; font-size:1.2rem; font-weight:700; margin:2rem 0 0.75rem;">Charities that can support you</h3>
+  <p style="color:var(--slate); font-size:0.95rem; margin-bottom:1rem;">These organisations specialise in supporting migrant workers and can provide advice, advocacy, and practical help.</p>
+
+  <div class="contact-card">
+    <div class="contact-icon">🌐</div>
+    <div>
+      <h4>Migrant Rights Network</h4>
+      <p>Policy and advocacy organisation working to advance the rights of migrants in the UK. Publishes guides and resources on migrant workers' rights.<br>
+      <a href="https://www.migrantsrights.org.uk" target="_blank">migrantsrights.org.uk</a></p>
+    </div>
+  </div>
+
+  <div class="contact-card">
+    <div class="contact-icon">⚖️</div>
+    <div>
+      <h4>Work Rights Centre</h4>
+      <p>Provides free employment and immigration advice to migrants and EU citizens. Particularly experienced with care workers and sponsored workers.<br>
+      <a href="https://www.workrightscentre.org" target="_blank">workrightscentre.org</a></p>
+    </div>
+  </div>
+
+  <div class="contact-card">
+    <div class="contact-icon">🏴󠁧󠁢󠁳󠁣󠁴󠁿</div>
+    <div>
+      <h4>Workers Support Centre (Scotland)</h4>
+      <p>Based in Scotland, provides free advice and support to migrant workers on employment rights, exploitation, and access to services.<br>
+      <a href="https://www.workerssupportcentre.org" target="_blank">workerssupportcentre.org</a></p>
+    </div>
+  </div>
+
+  <div class="contact-card">
+    <div class="contact-icon">✊</div>
+    <div>
+      <h4>Migrants At Work</h4>
+      <p>Created this guide. We support migrant workers — particularly those on sponsored visas — through advice, resources, and community support.<br>
+      <a href="mailto:info@migrantsatwork.org">info@migrantsatwork.org</a></p>
+    </div>
+  </div>
+
+  <h3 style="font-family:'Fraunces',serif; font-size:1.2rem; font-weight:700; margin:2rem 0 0.75rem;" id="foodbank">Food help &amp; emergency support</h3>
+  <p style="color:var(--slate); font-size:0.95rem; margin-bottom:1rem;">If you are struggling to afford food, you are not alone — and there is support available. Food banks are open to working people regardless of immigration status. They are charitable services, not connected to the Home Office or UKVI.</p>
+
+  <div class="contact-card">
+    <div class="contact-icon">🍞</div>
+    <div>
+      <h4>Trussell Trust Food Banks</h4>
+      <p>A network of over 1,300 food bank centres across the UK. You usually need a referral voucher from a GP, social worker, school, or Citizens Advice. Some accept self-referrals — call ahead to check.<br>
+      <a href="https://www.trusselltrust.org/get-help/find-a-foodbank/" target="_blank">trusselltrust.org — Find a food bank near you</a></p>
+    </div>
+  </div>
+
+  <div class="contact-card">
+    <div class="contact-icon">🥡</div>
+    <div>
+      <h4>Community fridges, larders &amp; independent food banks</h4>
+      <p>Many local communities run free food sharing without needing a referral. Find a community fridge near you at <a href="https://communityfridgemap.co.uk" target="_blank">communityfridgemap.co.uk</a>. For independent food banks, search "[your town] food bank" or ask at your local library or community centre.</p>
+    </div>
+  </div>
+
+  <div class="contact-card">
+    <div class="contact-icon">🏛️</div>
+    <div>
+      <h4>Local council Household Support Fund</h4>
+      <p>Many councils can provide emergency food vouchers or supermarket credit through the Household Support Fund. Contact your local council's welfare or benefits team directly, or ask Citizens Advice to refer you.</p>
+    </div>
+  </div>
+
+  <div class="contact-card">
+    <div class="contact-icon">⛪</div>
+    <div>
+      <h4>Faith groups &amp; community meals</h4>
+      <p>Many churches, mosques, gurdwaras, and temples run free meals, community cafes, or food support open to everyone regardless of faith. Ask locally or search "[your area] community meal".</p>
+    </div>
+  </div>
+
+  <div class="highlight gold" style="margin-top:1rem;">
+    <strong>📞 In immediate financial crisis?</strong>
+    <p>Call Citizens Advice on <strong>0800 144 8848</strong> (freephone, Monday to Friday) or visit <a href="https://www.citizensadvice.org.uk" target="_blank" style="color:#a07c2a;font-weight:600;">citizensadvice.org.uk</a> — they can refer you to food banks, emergency grants, and other support.</p>
+  </div>
+
+  <h3 style="font-family:'Fraunces',serif; font-size:1.2rem; font-weight:700; margin:2rem 0 0.75rem;">Free legal advice</h3>
+  <p style="color:var(--slate); font-size:0.95rem; margin-bottom:1rem;">You do not need to pay for a solicitor to get legal help. There are several free options available for employment, immigration, and other civil matters.</p>
+
+  <div class="contact-card">
+    <div class="contact-icon">🎓</div>
+    <div>
+      <h4>University Law Clinics</h4>
+      <p>Many UK universities run free legal clinics where law students — supervised by qualified solicitors — provide advice on employment and immigration matters. To find one near you, search "<strong>university law clinic [your city]</strong>" or ask Citizens Advice for a referral.<br>
+      <a href="https://www.lawworks.org.uk/legal-advice-individuals/find-legal-advice-clinic" target="_blank">lawworks.org.uk — Find a Legal Advice Clinic</a></p>
+    </div>
+  </div>
+
+  <div class="contact-card">
+    <div class="contact-icon">🏛️</div>
+    <div>
+      <h4>LawWorks</h4>
+      <p>A charity that connects people on low incomes with free legal advice from volunteer solicitors. Covers employment law and other civil matters.<br>
+      <a href="https://www.lawworks.org.uk" target="_blank">lawworks.org.uk</a></p>
+    </div>
+  </div>
+
+  <div class="contact-card">
+    <div class="contact-icon">⚖️</div>
+    <div>
+      <h4>Law Centres</h4>
+      <p>Law centres provide free legal advice to local communities on housing, employment, immigration, and welfare. They specialise in supporting people who cannot afford a solicitor.<br>
+      <a href="https://www.lawcentres.org.uk" target="_blank">lawcentres.org.uk — Find your nearest law centre</a></p>
+    </div>
+  </div>
+
+  <div class="contact-card">
+    <div class="contact-icon">🆘</div>
+    <div>
+      <h4>Legal Aid</h4>
+      <p>You may be entitled to government-funded legal aid for immigration, asylum, and some employment matters if you meet the financial eligibility criteria. Check eligibility and find a legal aid provider at:<br>
+      <a href="https://www.gov.uk/check-legal-aid" target="_blank">gov.uk/check-legal-aid</a></p>
+    </div>
+  </div>
+
+  <div class="contact-card">
+    <div class="contact-icon">🧒</div>
+    <div>
+      <h4>Coram Children's Legal Centre</h4>
+      <p>Free immigration and education law advice for children and young people and their families.<br>
+      <a href="https://www.childrenslegalcentre.com" target="_blank">childrenslegalcentre.com</a></p>
+    </div>
+  </div>
+
+  <div class="highlight rust" style="margin-top:1rem;">
+    <strong>⚠ Only use regulated immigration advisers</strong>
+    <p>Immigration advice can only legally be given by solicitors or advisers registered with the OISC. Never pay someone who is not registered — they are operating illegally and can seriously damage your case. Find a regulated adviser at <a href="https://www.gov.uk/find-an-immigration-adviser" target="_blank" style="color:var(--rust);font-weight:600;">gov.uk/find-an-immigration-adviser</a> or report an unregistered adviser at <a href="https://www.gov.uk/report-immigration-adviser" target="_blank" style="color:var(--rust);font-weight:600;">gov.uk/report-immigration-adviser</a>.</p>
+  </div>
+</div>
+
 
 
 
