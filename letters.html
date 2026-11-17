@@ -63,7 +63,7 @@ mark{background:var(--mark);color:inherit;border-radius:3px;padding:0 2px}
   </section>
 </div>
 
-<p class="next">After you send it: keep a copy, note the date, and give your employer 7 days to reply. If nothing changes, call ACAS free on <a href="tel:03001231100">0300 123 1100</a>, or get in touch through our <a href="https://migrant-at-work.cms.webnode.co.uk/contact-us/" target="_blank" rel="noopener">contact us page</a>.</p>
+<p class="next">After you send it: keep a copy, note the date, and give your employer 7 days to reply. If nothing changes, call ACAS free on <a href="tel:03001231100">0300 123 1100</a>, or get in touch through our <a href="https://www.migrantsatwork.org" target="_blank" rel="noopener">contact us page</a>.</p>
 </main>
 
 <script>
@@ -153,4 +153,82 @@ Please return them within 2 working days and confirm in writing that you will no
  fields:[["what","What you were charged for","text","e.g. Certificate of Sponsorship"],["amount","Amount (£)","text",""],["how","When and how it was taken","text","e.g. deducted from my October wages"]],
  body:`I have been charged £{{amount}} for {{what}}. This was taken: {{how}}.
 
-I understand that Home Office sponsor guidance does not allow employers to pass sponsorship or recruitment costs on to
+I understand that Home Office sponsor guidance does not allow employers to pass sponsorship or recruitment costs on to the worker, including the Certificate of Sponsorship, the Immigration Skills Charge and sponsor licence fees. Repayment clauses for these costs should not be enforced.
+
+Please refund the full amount within 14 days, and confirm in writing that no further charges or deductions of this kind will be made.`},
+
+{id:"hours",title:"Hours or role changed",
+ when:"Use this if your hours, pay or duties were cut or changed without your agreement.",warn:"",
+ subject:"Change to my hours, pay or role",
+ fields:[["changedate","Date it changed","date",""],["details","What changed","area","e.g. My hours dropped from 37.5 to 20 a week."],["contracted","What your contract says","text","e.g. 37.5 hours a week at £13 per hour"]],
+ body:`My working pattern changed from {{changedate}}. {{details}}
+
+My contract states: {{contracted}}. I have not agreed to this change.
+
+Please confirm in writing, within 7 days:
+- the reason for the change
+- whether it is temporary and, if so, when it will end
+- whether it affects my sponsorship, and whether it has been reported to the Home Office where required
+- how my contracted pay will be protected.
+
+I reserve my right to raise a formal grievance if this is not resolved.`},
+
+{id:"leaving",title:"P45 and final pay",
+ when:"Use this after your job ends, to get your papers and any money owed.",warn:"",
+ subject:"Request for P45, final pay and confirmation of leaving date",
+ fields:[["lastday","Your last day of work","date",""]],
+ body:`My employment ended on {{lastday}}. Please send me, within 7 days:
+- my P45 and final payslip
+- payment of any unpaid wages and unused holiday that I have accrued
+- written confirmation of my last working day
+- the date on which you reported the end of my sponsorship to the Home Office.
+
+I need these documents to claim any tax I am owed and to deal with my immigration position.`}
+];
+
+const COMMON=[["name","Your full name","text",""],["email","Your email","text",""],["company","Employer’s name","text",""],["contact","Who you are writing to","text","e.g. HR manager, or leave blank"],["date","Date of letter","date",""]];
+const $=id=>document.getElementById(id);
+const today=new Date().toISOString().slice(0,10);
+const vals={date:today};
+let cur=TEMPLATES[0];
+
+function fmt(k,v){ if(!v) return ""; if(/date|since|start|sickfrom|notified|lastday|changedate/.test(k)&&/^\d{4}-\d\d-\d\d$/.test(v)) return new Date(v+"T12:00:00").toLocaleDateString("en-GB",{day:"numeric",month:"long",year:"numeric"}); return v; }
+function labelOf(k){ const f=[...COMMON,...cur.fields].find(x=>x[0]===k); return f?f[1].toLowerCase():k; }
+function fill(s){ return s.replace(/\{\{(\w+)\}\}/g,(_,k)=>fmt(k,vals[k])||"\u0001"+labelOf(k)+"\u0002"); }
+function build(){
+  const to=[vals.contact,vals.company].filter(Boolean).join(", ")||"\u0001employer’s name\u0002";
+  return `${fill("{{date}}")}\n\nTo: ${to}\nSubject: ${fill(cur.subject)}\n\nDear ${vals.contact||"Sir or Madam"},\n\n${fill(cur.body)}\n\nPlease reply in writing.\n\nYours sincerely,\n${fill("{{name}}")}\n${fill("{{email}}")}`;
+}
+const esc=s=>s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+function render(){
+  const t=build();
+  $("letter").innerHTML=esc(t).replace(/\u0001/g,"<mark>[").replace(/\u0002/g,"]</mark>");
+  const plain=t.replace(/\u0001/g,"[").replace(/\u0002/g,"]");
+  const subj=plain.match(/^Subject: (.*)$/m)[1];
+  $("mail").href="mailto:?subject="+encodeURIComponent(subj)+"&body="+encodeURIComponent(plain.replace(/^[\s\S]*?Dear /,"Dear "));
+  return plain;
+}
+function field([k,label,type,hint]){
+  const w=document.createElement("div"); if(type==="area") w.className="wide";
+  const l=document.createElement("label"); l.htmlFor="f_"+k; l.textContent=label;
+  const i=document.createElement(type==="area"?"textarea":"input"); i.id="f_"+k; if(type!=="area") i.type=type==="date"?"date":"text";
+  i.placeholder=hint; i.value=vals[k]||""; i.autocomplete=k==="name"?"name":k==="email"?"email":"off";
+  i.addEventListener("input",()=>{vals[k]=i.value;render()});
+  w.append(l,i); return w;
+}
+function show(t){
+  cur=t; $("title").textContent=t.title; $("when").textContent=t.when; $("warn").innerHTML=t.warn||"";
+  const box=$("fields"); box.replaceChildren(...COMMON.slice(0,4).map(field),...t.fields.map(field),field(COMMON[4]));
+  document.querySelectorAll("#list button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.id===t.id));
+  $("status").textContent=""; render();
+}
+TEMPLATES.forEach(t=>{const b=document.createElement("button"); b.type="button"; b.textContent=t.title; b.dataset.id=t.id; b.onclick=()=>show(t); $("list").append(b)});
+$("copy").onclick=async()=>{
+  const text=render();
+  try{await navigator.clipboard.writeText(text); $("status").textContent="Copied. Paste it into an email.";}
+  catch(e){const r=document.createRange(); r.selectNodeContents($("letter")); const s=getSelection(); s.removeAllRanges(); s.addRange(r); $("status").textContent="Letter selected. Press Ctrl+C (or Copy) to copy it.";}
+};
+show(TEMPLATES[0]);
+</script>
+</body>
+</html>
