@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to contact your employer — Migrants At Work</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:dark;--bg:#0b0b0b;--card:#151515;--ink:#f4f1ea;--mute:#b8b2a3;--line:#3b3320;--acc:#d4a72c;--acc-ink:#0b0b0b;--mark:#5c4a10;--warn-bg:#1f1a0a;--warn-line:#d4a72c}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 "Atkinson Hyperlegible",system-ui,sans-serif}
+main{max-width:1040px;margin:0 auto;padding:28px 18px 48px}
+h1{font-size:1.9rem;line-height:1.2;margin:0 0 8px}
+h2{font-size:1.3rem;margin:0 0 6px}
+p{margin:0 0 12px;max-width:68ch}
+a{color:var(--acc)}
+.lead{color:var(--mute)}
+.box{border:1px solid var(--warn-line);background:var(--warn-bg);border-radius:6px;padding:10px 14px;margin:14px 0;max-width:72ch}
+.layout{display:grid;grid-template-columns:260px 1fr;gap:24px;margin-top:22px;align-items:start}
+@media(max-width:760px){.layout{grid-template-columns:1fr}}
+.list{display:flex;flex-direction:column;gap:6px}
+.list button{font:inherit;text-align:left;padding:10px 12px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:6px;cursor:pointer}
+.list button[aria-pressed=true]{border-color:var(--acc);box-shadow:inset 4px 0 0 var(--acc);font-weight:700}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:20px}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:12px 14px;margin:16px 0}
+@media(max-width:560px){.fields{grid-template-columns:1fr}}
+.fields .wide{grid-column:1/-1}
+label{display:block;font-size:.92rem;font-weight:700;margin-bottom:3px}
+input,textarea{width:100%;font:inherit;padding:8px 10px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink)}
+textarea{min-height:80px;resize:vertical}
+:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.letter{white-space:pre-wrap;border:1px solid var(--line);border-radius:6px;padding:16px;background:var(--bg);font-size:.98rem;line-height:1.6}
+mark{background:var(--mark);color:inherit;border-radius:3px;padding:0 2px}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 4px;align-items:center}
+.btn{font:inherit;font-weight:700;padding:10px 18px;border-radius:6px;border:1px solid var(--acc);background:var(--acc);color:var(--acc-ink);cursor:pointer;text-decoration:none}
+.btn.alt{background:transparent;color:var(--acc)}
+.status{color:var(--mute);font-size:.92rem}
+.next{margin-top:24px;color:var(--mute);font-size:.95rem;max-width:72ch}
+</style>
+</head>
+<body>
+<main>
+<h1>How to contact your employer</h1>
+<p class="lead">Choose what has gone wrong, fill in the boxes, and copy the letter into an email. Yellow brackets show anything you have not filled in yet.</p>
+<div class="box"><strong>Before you send:</strong> if you are on a sponsored visa, raising a problem can affect your relationship with your sponsor. Email: <a href="mailto:info@migrantsatwork.org">info@migrantsatwork.org</a>. These letters are general information, not legal advice.</div>
+
+<div class="layout">
+  <div class="list" id="list" role="group" aria-label="Choose a situation"></div>
+  <section class="panel" aria-live="polite">
+    <h2 id="title"></h2>
+    <p id="when" class="lead"></p>
+    <div id="warn"></div>
+    <div class="fields" id="fields"></div>
+    <h3 style="font-size:1.05rem;margin:0 0 8px">Your letter</h3>
+    <div class="letter" id="letter"></div>
+    <div class="actions">
+      <button class="btn" id="copy" type="button">Copy letter</button>
+      <a class="btn alt" id="mail" href="#">Open in email app</a>
+      <span class="status" id="status" role="status"></span>
+    </div>
+  </section>
+</div>
+
+<p class="next">After you send it: keep a copy, note the date, and give your employer 7 days to reply. If nothing changes, call ACAS free on <a href="tel:03001231100">0300 123 1100</a>, or get in touch through our <a href="https://migrant-at-work.cms.webnode.co.uk/contact-us/" target="_blank" rel="noopener">contact us page</a>.</p>
+</main>
+
+<script>
+/* ============================================================
+   HOW TO ADD OR EDIT A LETTER
+   Each letter below is one block. Copy a block, change the text.
+   - id:      short unique word, no spaces
+   - title:   button name
+   - when:    one sentence on when to use it
+   - warn:    optional warning shown above the form (or leave "")
+   - subject: email subject line
+   - fields:  extra boxes. [key, label, type, hint]; type = "text", "date" or "area"
+   - body:    the letter. Write {{key}} wherever a box's answer goes.
+   Everything else (layout, copy button) updates by itself.
+   ============================================================ */
+const TEMPLATES = [
+{id:"wages",title:"Wrong or unpaid wages",
+ when:"Use this if you were paid less than you are owed, or not paid at all.",warn:"",
+ subject:"Request to correct my pay: {{period}}",
+ fields:[["period","Pay period affected","text","e.g. 1–31 October 2026"],["amount","Amount you believe you are owed (£)","text","e.g. 240"],["details","What was wrong","area","e.g. I worked 160 hours but was paid for 140."]],
+ body:`I am writing about my pay for {{period}}. {{details}}
+
+By my calculation I have been underpaid by £{{amount}}. Under the Employment Rights Act 1996, an employer may not make deductions from wages unless the law requires it or I have agreed in writing, and I am entitled to at least the National Minimum Wage for all hours worked.
+
+Please pay the amount owed within 7 days of the date of this letter, and send me a written breakdown showing how my pay for this period was calculated.
+
+I would like to resolve this directly with you. If it is not resolved, I may contact ACAS and consider a claim to an Employment Tribunal.`},
+
+{id:"holiday",title:"Holiday pay",
+ when:"Use this if you were not paid for annual leave, or your leave is not being recorded correctly.",warn:"",
+ subject:"Request for holiday pay and leave records",
+ fields:[["period","Leave year or dates affected","text","e.g. April 2026 – March 2027"],["details","What happened","area","e.g. I took 5 days of leave in August but they were unpaid."]],
+ body:`I am writing about my paid annual leave for {{period}}. {{details}}
+
+Under the Working Time Regulations 1998 I am entitled to 5.6 weeks of paid leave each year (pro rata if I work part-time).
+
+Please send me, within 7 days:
+- my leave entitlement for the current leave year
+- the number of days I have taken and the number remaining
+- payment of any holiday pay that is due to me.`},
+
+{id:"sick",title:"Sick pay not paid",
+ when:"Use this if you were off sick and did not receive Statutory Sick Pay (SSP).",warn:"",
+ subject:"Request for sick pay",
+ fields:[["sickfrom","First day you were unwell","date",""],["notified","Date you told your employer","date",""]],
+ body:`I was unwell and unable to work from {{sickfrom}}. I told you about my absence on {{notified}} and I can provide a fit note (sick note) where one is needed.
+
+I have not received Statutory Sick Pay or any contractual sick pay for this period. Eligible employees are entitled to SSP from the fourth day of sickness absence.
+
+Please confirm in writing whether sick pay will be paid. If it will not, please tell me the reason. If it is due, please pay it within 7 days of the date of this letter.`},
+
+{id:"payslips",title:"Payslips missing",
+ when:"Use this if you are paid in cash, or do not receive payslips or they are wrong.",warn:"",
+ subject:"Request for payslips",
+ fields:[["period","Months you need payslips for","text","e.g. July to October 2026"],["details","Anything else (optional)","area","e.g. I am paid in cash with no record."]],
+ body:`I am writing to ask for my payslips for {{period}}. {{details}}
+
+Under section 8 of the Employment Rights Act 1996, I am entitled to an itemised pay statement on or before each payday, showing my pay, any deductions and the hours worked where pay depends on them.
+
+Please send me these payslips within 7 days, and confirm that payslips will be provided every pay period from now on.`},
+
+{id:"contract",title:"No written contract",
+ when:"Use this if you never received a written statement of your job terms.",warn:"",
+ subject:"Request for written statement of employment terms",
+ fields:[["start","Date you started work","date",""],["jobtitle","Your job title","text",""]],
+ body:`I started work with you on {{start}} as {{jobtitle}}. I have not received a written statement of my employment terms.
+
+Under section 1 of the Employment Rights Act 1996, I am entitled to this from my first day of work. It should include my job title, pay, normal working hours, place of work, holiday entitlement, sick pay and notice period.
+
+Please send it to me within 7 days. If my sponsorship paperwork lists a salary or hours, please make sure they match.`},
+
+{id:"documents",title:"Passport or documents held",
+ when:"Use this if your employer is keeping your passport, BRP or other identity documents.",
+ warn:"<div class='box'>Holding someone’s identity documents can be a sign of exploitation. If you feel unsafe, call Migrant Help free on <a href='tel:08088010503'>0808 8010 503</a> (24 hours), or 999 in an emergency.</div>",
+ subject:"Request for return of my documents",
+ fields:[["docs","Documents held","text","e.g. my passport and BRP"],["since","Held since","date",""]],
+ body:`I am writing to ask you to return {{docs}}, which you have held since {{since}}.
+
+These are my personal property. I have not agreed to you keeping them and I need them back now.
+
+Please return them within 2 working days and confirm in writing that you will not keep my documents in future. If they are not returned, I may seek advice from the police or the Fair Work Agency.`},
+
+{id:"fees",title:"Fees or sponsorship costs charged",
+ when:"Use this if you were charged for your visa, Certificate of Sponsorship, recruitment, or told to repay costs.",
+ warn:"<div class='box'>This letter involves your sponsor. Please get advice from Migrants At Work or the Work Rights Centre before you send it, so you know the risks and your options.</div>",
+ subject:"Request for refund of charges",
+ fields:[["what","What you were charged for","text","e.g. Certificate of Sponsorship"],["amount","Amount (£)","text",""],["how","When and how it was taken","text","e.g. deducted from my October wages"]],
+ body:`I have been charged £{{amount}} for {{what}}. This was taken: {{how}}.
+
+I understand that Home Office sponsor guidance does not allow employers to pass sponsorship or recruitment costs on to
